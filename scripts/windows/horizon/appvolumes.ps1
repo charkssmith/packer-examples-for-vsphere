@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $installer = "App Volumes Agent.msi"
-$appVolumesServer = "vdav01.tamu-commerce.edu"
+$appVolumesServer = "av1.thesmiths.pw"
 $listConfig = "/i ""F:\$installer"" /qn REBOOT=ReallySuppress MANAGER_ADDR=$appVolumesServer MANAGER_PORT=443 EnforceSSLCertificateValidation=0"
 
   Try 

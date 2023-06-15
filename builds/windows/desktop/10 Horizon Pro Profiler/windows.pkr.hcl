@@ -30,7 +30,7 @@ locals {
   build_date         = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version      = formatdate("YY.MM.DD.hh.mm", timestamp())
   build_description  = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
-  extra_info         = "Provisioning"
+  extra_info         = "Horizon"
   iso_paths          = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum       = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   manifest_date      = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
