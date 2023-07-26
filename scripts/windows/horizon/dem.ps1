@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 
 $installer = "VMware Dynamic Environment Manager Enterprise 2303 10.9 x64.msi"
 $licence = " VMware-DEM-10.9.0-GA.lic"
-$listConfig = "/i ""F:\$installer"" /qn /norestart ADDLOCAL=FlexEngine COMPENVCONFIGFILEPATH=\\synology.thesmiths.pw\DEMConfig\general"
+$listConfig = "/i ""F:\$installer"" /qn /norestart COMPENVCONFIGFILEPATH=\\synology.thesmiths.pw\lab\DEMConfig\general"
 
   # Install DEM Agent
   Try
