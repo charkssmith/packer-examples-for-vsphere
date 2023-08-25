@@ -20,8 +20,8 @@ SCRIPT_PATH=$(realpath "$(dirname "$(follow_link "$0")")")
 CONFIG_PATH=$(realpath "${1:-${SCRIPT_PATH}/config}")
 
 menu_option_1() {
-	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/5/
-	echo -e "\nCONFIRM: Build a VMware Photon OS 5 Template for VMware vSphere?"
+	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/4/
+	echo -e "\nCONFIRM: Build a VMware Photon OS 4 Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -50,6 +50,36 @@ menu_option_1() {
 }
 
 menu_option_2() {
+	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/5/
+	echo -e "\nCONFIRM: Build a VMware Photon OS 5 Template for VMware vSphere?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a VMware Photon OS 4 Template for VMware vSphere. ###
+	echo "Building a VMware Photon OS 5 Template for VMware vSphere..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+menu_option_3() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/debian/11/
 	echo -e "\nCONFIRM: Build a Debian 11 Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -79,7 +109,7 @@ menu_option_2() {
 	echo "Done."
 }
 
-menu_option_3() {
+menu_option_4() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/22-04-lts/
 	echo -e "\nCONFIRM: Build a Ubuntu Server 22.04 LTS (cloud-init) Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -109,7 +139,7 @@ menu_option_3() {
 	echo "Done."
 }
 
-menu_option_4() {
+menu_option_5() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/20-04-lts/
 	echo -e "\nCONFIRM: Build a Ubuntu Server 20.04 LTS (cloud-init) Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -139,7 +169,7 @@ menu_option_4() {
 	echo "Done."
 }
 
-menu_option_5() {
+menu_option_6() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/ubuntu/18-04-lts/
 	echo -e "\nCONFIRM: Build a Ubuntu Server 18.04 LTS Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -169,7 +199,7 @@ menu_option_5() {
 	echo "Done."
 }
 
-menu_option_6() {
+menu_option_7() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/9/
 	echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 9 Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -200,7 +230,7 @@ menu_option_6() {
 	echo "Done."
 }
 
-menu_option_7() {
+menu_option_8() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/linux/rhel/8/
 	echo -e "\nCONFIRM: Build a Red Hat Enterprise Linux 8 Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -955,6 +985,35 @@ menu_option_32() {
 	echo "Done."
 }
 
+menu_option_33() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise SDS/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by SDS?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by SDS..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+
 press_enter() {
 	cd "$SCRIPT_PATH"
 	echo -n "Press Enter to continue."
@@ -1023,6 +1082,7 @@ until [ "$selection" = "0" ]; do
 	echo "    	30  -  Windows 10 for Horizon Pro"
 	echo "    	31  -  Windows 10 for Horizon Enterprise Profiler"
 	echo "    	32  -  Windows 10 for Horizon Pro Profiler"
+	echo "    	33  -  Windows 11 for SDS"
 	echo ""
 	echo "      Other:"
 	echo ""
@@ -1191,7 +1251,12 @@ until [ "$selection" = "0" ]; do
 		clear
 		menu_option_32
 		press_enter
-		;;				
+		;;	
+	33)
+		clear
+		menu_option_33
+		press_enter
+		;;					
 	I)
 		clear
 		info
