@@ -30,7 +30,7 @@ locals {
   build_date         = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   build_version      = formatdate("YY.MM.DD.hh.mm", timestamp())
   build_description  = "Version: v${local.build_version}\nBuilt on: ${local.build_date}\n${local.build_by}"
-  extra_info         = "Horizon"
+  extra_info         = "SDS"
   iso_paths          = ["[${var.common_iso_datastore}] ${var.iso_path}/${var.iso_file}", "[] /vmimages/tools-isoimages/${var.vm_guest_os_family}.iso"]
   iso_checksum       = "${var.iso_checksum_type}:${var.iso_checksum_value}"
   manifest_date      = formatdate("YYYY-MM-DD hh:mm:ss", timestamp())
@@ -58,6 +58,8 @@ source "vsphere-iso" "windows-desktop" {
   cluster    = var.vsphere_cluster
   datastore  = var.vsphere_datastore
   folder     = var.vsphere_folder
+
+
 
   // Virtual Machine Settings
   vm_name              = local.vm_name
@@ -94,6 +96,8 @@ source "vsphere-iso" "windows-desktop" {
     "${path.cwd}/scripts/${var.vm_guest_os_family}/",
     "${path.cwd}/uploads/"
   ]
+
+
   cd_content = {
     "autounattend.xml" = templatefile("${abspath(path.root)}/data/autounattend.pkrtpl.hcl", {
       build_username       = var.build_username
@@ -163,7 +167,8 @@ build {
 
   provisioner "powershell" {
     environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
+      "BUILD_USERNAME=${var.build_username}",
+      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
@@ -189,8 +194,7 @@ build {
     restart_timeout = "120m"
   }
 
-  
-  provisioner "powershell" {
+    provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -198,25 +202,7 @@ build {
     elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osot.ps1"])
   }
-
-    provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/onedrive.ps1"])
-  }
-
-    provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sdelete.ps1"])
-  }  
-  
+ 
 
   post-processor "manifest" {
     output     = local.manifest_output

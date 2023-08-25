@@ -44,6 +44,7 @@ terraform.rc
 # Configurations
 ## Ignore default config directory.
 config/
+scripts/sds
 uploads/
 
 # Artifacts

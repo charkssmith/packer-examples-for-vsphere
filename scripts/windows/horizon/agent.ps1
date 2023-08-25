@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$installer = "VMware-Horizon-Agent-x86_64-2303-8.9.0-21435111.exe"
+$installer = "VMware-Horizon-Agent-x86_64-2306-8.10.0-22012512.exe"
 $listConfig = "/s /v ""/qn REBOOT=ReallySuppress ADDLOCAL=Core,USB,NGVC,RTAV,ClientDriveRedirection,V4V,VmwVaudio,TSMMR,RDP,BlastUDP,SdoSensor,PerfTracker,HelpDesk,PrintRedir"""
 # Core = Core
 # USB = USB Redirection
@@ -30,7 +30,7 @@ $listConfig = "/s /v ""/qn REBOOT=ReallySuppress ADDLOCAL=Core,USB,NGVC,RTAV,Cli
 
   # Install Horizon Agent
   Try {
-    Start-Process F:\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+    Start-Process I:\Packer\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
     Set-Service -Name vmlm -StartupType Automatic
   } Catch {
     Write-Error "Failed to install the Horizon Agent"

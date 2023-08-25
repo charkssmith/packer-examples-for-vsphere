@@ -65,6 +65,6 @@ resource "vsphere_virtual_machine" "vm" {
     "guestinfo.metadata"          = base64encode(file("${path.module}/metadata.yml"))
     "guestinfo.metadata.encoding" = "base64"
     "guestinfo.userdata"          = base64encode(file("${path.module}/userdata.yml"))
-    "guestinfo.userdata.encoding" = "base64"
+    "guestinfo.userdata.encoding" = "base64" 
   }
 }

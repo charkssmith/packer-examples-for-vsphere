@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $installer = "Teams_windows_x64.msi"
-$listConfig = "/i ""F:\$installer"" ALLUSERS=1"
+$listConfig = "/i ""F:\$installer"" ALLUSERS=1 ALLUSER=1"
 
   Try 
   {
