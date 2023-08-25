@@ -47,7 +47,7 @@ locals {
     })
   }
   data_source_command = var.common_data_source == "http" ? "ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.json" : "ks=/dev/sr1:/ks.json"
-  vm_name             = "packer-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${local.build_version}"
+  vm_name             = "${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}-${local.build_version}"
   bucket_name         = replace("${var.vm_guest_os_family}-${var.vm_guest_os_name}-${var.vm_guest_os_version}", ".", "")
   bucket_description  = "${var.vm_guest_os_family} ${var.vm_guest_os_name} ${var.vm_guest_os_version}"
 }
