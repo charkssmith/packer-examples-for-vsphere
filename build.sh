@@ -734,118 +734,6 @@ menu_option_23() {
 }
 
 menu_option_24() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
-	echo -e "\nContinue? (y/n)"
-	read -r REPLY
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		exit 1
-	fi
-
-	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
-
-	### Initialize HashiCorp Packer and required plugins. ###
-	echo "Initializing HashiCorp Packer and required plugins..."
-	packer init "$INPUT_PATH"
-
-	### Start the Build. ###
-	echo "Starting the build...."
-	packer build -force \
-		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-		"$INPUT_PATH"
-
-	### All done. ###
-	echo "Done."
-}
-
-menu_option_25() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Pro/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
-	echo -e "\nContinue? (y/n)"
-	read -r REPLY
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		exit 1
-	fi
-
-	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
-
-	### Initialize HashiCorp Packer and required plugins. ###
-	echo "Initializing HashiCorp Packer and required plugins..."
-	packer init "$INPUT_PATH"
-
-	### Start the Build. ###
-	echo "Starting the build...."
-	packer build -force \
-		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-		"$INPUT_PATH"
-
-	### All done. ###
-	echo "Done."
-}
-
-menu_option_26() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise Profiler/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
-	echo -e "\nContinue? (y/n)"
-	read -r REPLY
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		exit 1
-	fi
-
-	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon to Profile and App Volumes..."
-
-	### Initialize HashiCorp Packer and required plugins. ###
-	echo "Initializing HashiCorp Packer and required plugins..."
-	packer init "$INPUT_PATH"
-
-	### Start the Build. ###
-	echo "Starting the build...."
-	packer build -force \
-		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-		"$INPUT_PATH"
-
-	### All done. ###
-	echo "Done."
-}
-
-menu_option_27() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Pro Profiler/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
-	echo -e "\nContinue? (y/n)"
-	read -r REPLY
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		exit 1
-	fi
-
-	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon to Profile and App Volumes..."
-
-	### Initialize HashiCorp Packer and required plugins. ###
-	echo "Initializing HashiCorp Packer and required plugins..."
-	packer init "$INPUT_PATH"
-
-	### Start the Build. ###
-	echo "Starting the build...."
-	packer build -force \
-		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
-		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
-		"$INPUT_PATH"
-
-	### All done. ###
-	echo "Done."
-}
-
-menu_option_28() {
 	INPUT_PATH="$SCRIPT_PATH"/builds/windows/desktop/10/
 	echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
@@ -873,7 +761,120 @@ menu_option_28() {
 	echo "Done."
 }
 
-menu_option_29() {
+
+menu_option_50() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+menu_option_51() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Pro/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+menu_option_52() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise Profiler/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon to Profile and App Volumes..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+menu_option_53() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Pro Profiler/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon to Profile and App Volumes..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
+menu_option_54() {
 	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/10 Horizon Enterprise/"
 	echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
@@ -901,7 +902,7 @@ menu_option_29() {
 	echo "Done."
 }
 
-menu_option_30() {
+menu_option_55() {
 	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/10 Horizon Pro/"
 	echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
@@ -929,7 +930,7 @@ menu_option_30() {
 	echo "Done."
 }
 
-menu_option_31() {
+menu_option_56() {
 	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/10 Horizon Enterprise Profiler/"
 	echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
@@ -957,7 +958,7 @@ menu_option_31() {
 	echo "Done."
 }
 
-menu_option_32() {
+menu_option_57() {
 	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/10 Horizon Pro Profiler/"
 	echo -e "\nCONFIRM: Build a Windows 10 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
@@ -985,17 +986,17 @@ menu_option_32() {
 	echo "Done."
 }
 
-menu_option_33() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise SDS/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by SDS?"
+menu_option_80() {
+	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/5/
+	echo -e "\nCONFIRM: Build a VMware Photon OS 5 Packer for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		exit 1
 	fi
 
-	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by SDS..."
+	### Build a VMware Photon OS 4 Template for VMware vSphere. ###
+	echo "Building a VMware Photon OS 5 Template for VMware vSphere..."
 
 	### Initialize HashiCorp Packer and required plugins. ###
 	echo "Initializing HashiCorp Packer and required plugins..."
@@ -1006,6 +1007,8 @@ menu_option_33() {
 	packer build -force \
 		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
 		"$INPUT_PATH"
 
@@ -1073,18 +1076,22 @@ until [ "$selection" = "0" ]; do
 	echo "    	21  -  Windows Server 2019 - Standard Only"
 	echo "    	22  -  Windows Server 2019 - Datacenter Only"
 	echo "    	23  -  Windows 11"
-	echo "    	24  -  Windows 11 for Horizon Enterprise"
-	echo "    	25  -  Windows 11 for Horizon Pro"
-	echo "    	26  -  Windows 11 for Horizon Enterprise Profiler"
-	echo "    	27  -  Windows 11 for Horizon Pro Profiler"
-	echo "    	28  -  Windows 10"
-	echo "    	29  -  Windows 10 for Horizon Enterprise"
-	echo "    	30  -  Windows 10 for Horizon Pro"
-	echo "    	31  -  Windows 10 for Horizon Enterprise Profiler"
-	echo "    	32  -  Windows 10 for Horizon Pro Profiler"
-	echo "    	33  -  Windows 11 for SDS"
+	echo "    	24  -  Windows 10"
+	echo ""
+	echo "      Horizon Templates:"
+	echo ""
+	echo "    	50  -  Windows 11 for Horizon Enterprise"
+	echo "    	51  -  Windows 11 for Horizon Pro"
+	echo "    	52  -  Windows 11 for Horizon Enterprise Profiler"
+	echo "    	53  -  Windows 11 for Horizon Pro Profiler"
+	echo "    	54  -  Windows 10 for Horizon Enterprise"
+	echo "    	55  -  Windows 10 for Horizon Pro"
+	echo "    	56  -  Windows 10 for Horizon Enterprise Profiler"
+	echo "    	57  -  Windows 10 for Horizon Pro Profiler"
 	echo ""
 	echo "      Other:"
+	echo ""
+	echo "    	80  -  Photon Packer Build"
 	echo ""
 	echo "        I   -  Information"
 	echo "        Q   -  Quit"
@@ -1252,11 +1259,51 @@ until [ "$selection" = "0" ]; do
 		menu_option_32
 		press_enter
 		;;	
-	33)
+    50)
 		clear
-		menu_option_33
+		menu_option_50
 		press_enter
-		;;					
+		;;	
+	51)
+		clear
+		menu_option_51
+		press_enter
+		;;	
+	52)
+		clear
+		menu_option_52
+		press_enter
+		;;	
+	53)
+		clear
+		menu_option_53
+		press_enter
+		;;	
+	54)
+		clear
+		menu_option_54
+		press_enter
+		;;	
+	55)
+		clear
+		menu_option_55
+		press_enter
+		;;	
+	56)
+		clear
+		menu_option_56
+		press_enter
+		;;	
+	57)
+		clear
+		menu_option_57
+		press_enter
+		;;		
+	80)
+		clear
+		menu_option_80
+		press_enter
+		;;			
 	I)
 		clear
 		info
