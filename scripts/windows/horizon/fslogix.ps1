@@ -1,16 +1,17 @@
 $ErrorActionPreference = "Stop"
+$software = "FSLogix*"
 
-$installer = "FSLogixAppsSetup.exe"
+### Set variables for install ###
+$installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
 $listConfig = "/install /quiet /norestart"
 
-  # Install FSLogix
-  Try 
-  {
-    Start-Process F:\$installer -ArgumentList $listConfig -PassThru -Wait
-  }
-  Catch
-  {
-    Write-Error "Failed to install FSLogix"
-    Write-Error $_.Exception
-    Exit -1 
-  }
+Try 
+{
+  Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+}
+Catch
+{
+  Write-Error "Failed to install $installer"
+  Write-Error $_.Exception
+  Exit -1 
+}
