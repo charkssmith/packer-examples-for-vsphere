@@ -1,0 +1,7 @@
+---
+- name: "Setting hostname to packer."
+  shell: |
+    hostnamectl set-hostname packer
+- name: "Setting hostname to packer."
+  shell: |
+    hostnamectl set-hostname packer
