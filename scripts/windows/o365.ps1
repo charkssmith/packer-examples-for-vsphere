@@ -1,17 +1,19 @@
 $ErrorActionPreference = "Stop"
-$software = "officesetup.*"
 
-### Set variables for install ###
-$installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
+$installer = "setup.exe"
 $listconfig = "/configure TheSmiths_Configuration.xml"
 
-Try 
-{
-  Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
-}
-Catch
-{
-  Write-Error "Failed to install $installer"
-  Write-Error $_.Exception
-  Exit -1 
-}
+  # Change to temp folder
+  Set-Location $env:TEMP
+
+  # Install o365
+  Try
+  {
+    Start-Process $installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+  }
+  Catch
+  {
+    Write-Error "Failed to install o365"
+    Write-Error $_.Exception
+    Exit -1 
+  }
