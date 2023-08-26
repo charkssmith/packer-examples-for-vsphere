@@ -987,7 +987,7 @@ menu_option_57() {
 }
 
 menu_option_80() {
-	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/5/
+	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/packer/
 	echo -e "\nCONFIRM: Build a VMware Photon OS 5 Packer for VMware vSphere?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
