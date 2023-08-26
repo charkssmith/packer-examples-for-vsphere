@@ -1,13 +1,19 @@
 $ErrorActionPreference = "Stop"
+$software = "OneDriveSetup.*"
 
-$installer = "OneDriveSetup.exe"
+### Set variables for install ###
+$installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
 $listConfig = "/allusers"
 
-  Try {
-    Start-Process F:\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
-  } Catch {
-    Write-Error "Failed to install OneDrive"
-    Write-Error $_.Exception
-    Exit -1
-  }
+Try 
+{
+  Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+}
+Catch
+{
+  Write-Error "Failed to install $installer"
+  Write-Error $_.Exception
+  Exit -1 
+}
+
 
