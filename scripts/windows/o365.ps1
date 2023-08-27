@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $installer = "setup.exe"
-$listconfig = "/configure TheSmiths_Configuration.xml"
+$listconfig = "/configure $env:TEMP\TheSmiths_Configuration.xml"
 
   # Change to temp folder
   Set-Location $env:TEMP
@@ -9,7 +9,7 @@ $listconfig = "/configure TheSmiths_Configuration.xml"
   # Install o365
   Try
   {
-    Start-Process $installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+    Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
   }
   Catch
   {
