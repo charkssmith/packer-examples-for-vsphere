@@ -13,7 +13,7 @@ $ErrorActionPreference = "Stop"
 
   Try
   {
-    Install-Module VMware.PowerCLI -Scope AllUsers -force -SkipPublisherCheck -AllowClobber
+    Install-Module VMware.PowerCLI -Scope User -force -SkipPublisherCheck -AllowClobber
   }
   Catch
   {
