@@ -5,9 +5,11 @@ $software = "OneDriveSetup.*"
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
 $listConfig = "/allusers"
 
+Set-Location $env:TEMP
+
 Try 
 {
-  Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+  Start-Process $installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
 }
 Catch
 {
@@ -15,5 +17,3 @@ Catch
   Write-Error $_.Exception
   Exit -1 
 }
-
-

@@ -162,7 +162,7 @@ build {
  provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
-      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
+      "SOFTWARE_DATASTORE=${var.common_iso_datastore"}
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
