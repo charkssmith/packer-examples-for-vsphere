@@ -159,10 +159,13 @@ build {
     "source.vsphere-iso.windows-desktop",
   ]
 
- provisioner "powershell" {
+  provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
-      "SOFTWARE_DATASTORE=${var.common_iso_datastore"}
+      "VSPHERE_ENDPOINT=${var.vsphere_endpoint}",
+      "VSPHERE_USERNAME=${var.vsphere_username}",
+      "VSPHERE_PASSWORD=${var.vsphere_password}",
+      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password

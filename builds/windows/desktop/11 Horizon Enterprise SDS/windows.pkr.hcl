@@ -194,9 +194,13 @@ build {
     restart_timeout = "120m"
   }
 
-    provisioner "powershell" {
+  provisioner "powershell" {
     environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
+      "BUILD_USERNAME=${var.build_username}",
+      "VSPHERE_ENDPOINT=${var.vsphere_endpoint}",
+      "VSPHERE_USERNAME=${var.vsphere_username}",
+      "VSPHERE_PASSWORD=${var.vsphere_password}",
+      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
