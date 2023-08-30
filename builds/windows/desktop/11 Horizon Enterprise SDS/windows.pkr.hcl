@@ -93,8 +93,7 @@ source "vsphere-iso" "windows-desktop" {
   iso_paths    = local.iso_paths
   iso_checksum = local.iso_checksum
   cd_files = [
-    "${path.cwd}/scripts/${var.vm_guest_os_family}/",
-    "${path.cwd}/uploads/"
+    "${path.cwd}/scripts/${var.vm_guest_os_family}/"
   ]
 
 
