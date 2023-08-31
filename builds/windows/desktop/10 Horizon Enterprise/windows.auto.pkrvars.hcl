@@ -7,7 +7,7 @@
 vm_inst_os_language = "en-US"
 vm_inst_os_keyboard = "en-US"
 vm_inst_os_image    = "Windows 10 Enterprise"
-vm_inst_os_kms_key  = "NPPR9-FWDCX-D2C8J-H872K-2YT43"
+vm_inst_os_kms_key  = "TNP2F-X9BP9-MFVGQ-GV36F-KBT44"
 
 // Guest Operating System Metadata
 vm_guest_os_language = "en-US"
@@ -54,7 +54,7 @@ communicator_port    = 5985
 communicator_timeout = "12h"
 
 // Provisioner Settings
-scripts = ["scripts/windows/windows-prepare.ps1", "scripts/windows/activate.ps1", "scripts/windows/powercli.ps1", "scripts/windows/copy-datastoreinstallers.ps1",  "scripts/windows/horizon/agent.ps1", "scripts/windows/horizon/appvolumes.ps1", "scripts/windows/horizon/dem.ps1", "scripts/windows/horizon/fslogix.ps1", "scripts/windows/o365.ps1", "scripts/windows/teams.ps1", "scripts/windows/bginfo.ps1", "scripts/windows/rsat.ps1"]
+scripts = ["scripts/windows/windows-prepare.ps1", "scripts/windows/powercli.ps1", "scripts/windows/copy-datastoreinstallers.ps1",  "scripts/windows/horizon/agent.ps1", "scripts/windows/horizon/appvolumes.ps1", "scripts/windows/horizon/dem.ps1", "scripts/windows/horizon/fslogix.ps1", "scripts/windows/o365.ps1", "scripts/windows/teams.ps1", "scripts/windows/bginfo.ps1", "scripts/windows/rsat.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",

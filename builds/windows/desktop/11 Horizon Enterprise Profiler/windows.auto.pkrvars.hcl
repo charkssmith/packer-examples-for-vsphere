@@ -7,7 +7,7 @@
 vm_inst_os_language = "en-US"
 vm_inst_os_keyboard = "en-US"
 vm_inst_os_image    = "Windows 11 Enterprise"
-vm_inst_os_kms_key  = "NPPR9-FWDCX-D2C8J-H872K-2YT43"
+vm_inst_os_kms_key  = "TNP2F-X9BP9-MFVGQ-GV36F-KBT44"
 
 // Guest Operating System Metadata
 vm_guest_os_language = "en-US"

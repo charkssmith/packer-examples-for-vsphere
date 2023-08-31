@@ -7,7 +7,7 @@
 vm_inst_os_language = "en-US"
 vm_inst_os_keyboard = "en-US"
 vm_inst_os_image    = "Windows 11 Pro"
-vm_inst_os_kms_key  = "W269N-WFGWX-YVC9B-4J6C9-T83GX"
+vm_inst_os_kms_key  = "RP7PC-NM2DH-QT8TR-RRXJB-6VJXG"
 
 // Guest Operating System Metadata
 vm_guest_os_language = "en-US"
