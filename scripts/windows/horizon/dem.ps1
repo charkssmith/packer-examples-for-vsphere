@@ -1,9 +1,9 @@
 $ErrorActionPreference = "Stop"
-$software = "VMware Dynamic Environemnt Manager*"
+$software = "VMware Dynamic Environment Manager*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
-$listConfig = "/i ""$env:TEMP\$installer""  /qn /norestart ADDLOCAL=FlexEngine COMPENVCONFIGFILEPATH=\\synology.thesmiths.pw\lab\DEMConfig\general"
+$listConfig = "/i ""$env:TEMP\$installer""  /qn /norestart COMPENVCONFIGFILEPATH=\\synology.thesmiths.pw\lab\DEMConfig\general"
 
 Try 
 {
