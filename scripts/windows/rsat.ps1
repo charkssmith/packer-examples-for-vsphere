@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
+Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Remote Desktops Services" -Recurse -Force
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Active Directory Administrative Center.lnk" -Force
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Active Directory Domains and Trusts.lnk" -Force
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Active Directory PowerShell Snap-In.lnk" -Force
