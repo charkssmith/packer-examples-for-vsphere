@@ -3,7 +3,7 @@ $software = "Firefox*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
-$listConfig = "/i ""$env:TEMP\$installer"" /S"
+$listConfig = "/i ""$env:TEMP\$installer"" /q"
 
 Try
 {
