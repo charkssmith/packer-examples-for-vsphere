@@ -1016,6 +1016,34 @@ menu_option_80() {
 	echo "Done."
 }
 
+menu_option_81() {
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Enterprise SDS/"
+	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
+	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
+
 
 press_enter() {
 	cd "$SCRIPT_PATH"
@@ -1093,6 +1121,7 @@ until [ "$selection" = "0" ]; do
 	echo "      Other:"
 	echo ""
 	echo "    	80  -  Photon Packer Build"
+	echo "    	81  -  SDS (for Sequel Data Systems only)"
 	echo ""
 	echo "        I   -  Information"
 	echo "        Q   -  Quit"
@@ -1326,6 +1355,11 @@ until [ "$selection" = "0" ]; do
 		press_enter
 		;;		
 	80)
+		clear
+		menu_option_80
+		press_enter
+		;;	
+	81)
 		clear
 		menu_option_80
 		press_enter
