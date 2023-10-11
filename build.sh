@@ -1361,7 +1361,7 @@ until [ "$selection" = "0" ]; do
 		;;	
 	81)
 		clear
-		menu_option_80
+		menu_option_81
 		press_enter
 		;;			
 	I)
