@@ -159,7 +159,7 @@ source "vsphere-iso" "windows-desktop-11" {
   }
 }
 
-source "vsphere-iso" "windows-desktop-11-prov" {
+source "vsphere-iso" "windows-desktop-11-horizon" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -174,7 +174,7 @@ source "vsphere-iso" "windows-desktop-11-prov" {
   folder     = var.vsphere_folder
 
   // Virtual Machine Settings
-  vm_name_horizon      = local.vm_name
+  vm_name              = local.vm_name_horizon
   guest_os_type        = var.vm_guest_os_type
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_count
@@ -265,7 +265,7 @@ source "vsphere-iso" "windows-desktop-11-prov" {
   }
 }
 
-source "vsphere-iso" "windows-desktop-11-horizon" {
+source "vsphere-iso" "windows-desktop-11-prov" {
 
   // vCenter Server Endpoint Settings and Credentials
   vcenter_server      = var.vsphere_endpoint
@@ -280,7 +280,7 @@ source "vsphere-iso" "windows-desktop-11-horizon" {
   folder     = var.vsphere_folder
 
   // Virtual Machine Settings
-  vm_name_prov         = local.vm_name
+  vm_name              = local.vm_name_prov
   guest_os_type        = var.vm_guest_os_type
   firmware             = var.vm_firmware
   CPUs                 = var.vm_cpu_count
