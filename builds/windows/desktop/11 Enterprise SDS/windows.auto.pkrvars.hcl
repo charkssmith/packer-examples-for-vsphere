@@ -55,10 +55,16 @@ communicator_port    = 5985
 communicator_timeout = "12h"
 
 // Provisioner Settings
-scripts = ["scripts/windows/windows-prepare.ps1", "scripts/windows/powercli.ps1", "scripts/windows/copy-datastoreinstallers.ps1", "scripts/windows/sds/rvtools.ps1", "scripts/windows/sds/devolutionsrdm.ps1", "scripts/windows/sds/notepad++.ps1", "scripts/windows/sds/vmwareremoteconsole.ps1"]
-
+// scripts = ["scripts/windows/windows-prepare.ps1", "scripts/windows/powercli.ps1", "scripts/windows/copy-datastoreinstallers.ps1", "scripts/windows/sds/rvtools.ps1", "scripts/windows/sds/devolutionsrdm.ps1", "scripts/windows/sds/notepad++.ps1", "scripts/windows/sds/vmwareremoteconsole.ps1"]
+scripts = ["scripts/windows/windows-prepare.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
+  "choco install vmware-powercli-psmodule",
+  "choco install rvtools",
+  "choco install rdm",
+  "choco install notepadplusplus.install",
+  "choco install vmrc",
+  "choco install postman",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
