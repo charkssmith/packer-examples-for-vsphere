@@ -791,7 +791,7 @@ menu_option_50() {
 }
 
 menu_option_51() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Entprise/"
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Enterprise/"
 	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
