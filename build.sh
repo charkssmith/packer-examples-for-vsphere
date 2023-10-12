@@ -791,7 +791,7 @@ menu_option_50() {
 }
 
 menu_option_51() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Pro/"
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Entprise/"
 	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
@@ -1110,7 +1110,7 @@ until [ "$selection" = "0" ]; do
 	echo "      Horizon Templates:"
 	echo ""
 	echo "    	50  -  Windows 11 Pro for Horizon (Base, Horizon & Provisioning)"
-	echo "    	51  -  Windows 11 for Horizon Pro"
+	echo "    	51  -  Windows 11 Enterprise for Horizon (Base, Horizon & Provisioning)"
 	echo "    	52  -  Windows 11 for Horizon Enterprise Profiler"
 	echo "    	53  -  Windows 11 for Horizon Pro Profiler"
 	echo "    	54  -  Windows 10 for Horizon Enterprise"
