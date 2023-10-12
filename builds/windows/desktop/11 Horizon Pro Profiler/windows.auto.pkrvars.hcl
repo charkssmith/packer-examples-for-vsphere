@@ -35,7 +35,7 @@ vm_disk_controller_type  = ["pvscsi"]
 vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 vm_video_mem_size        = 131072
-vm_video_displays        = 1
+vm_video_displays        = 4
 
 // Removable Media Settings
 iso_url            = null
