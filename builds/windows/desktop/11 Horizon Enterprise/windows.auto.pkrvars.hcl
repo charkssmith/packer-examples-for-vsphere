@@ -78,6 +78,3 @@ inline = [
   "choco install bginfo",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
-
-// Provisioner Settings
-scripts = ["scripts/windows/copy-datastoreinstallers.ps1",  "scripts/windows/horizon/agent.ps1", "scripts/windows/horizon/appvolumes.ps1", "scripts/windows/horizon/dem.ps1", "scripts/windows/o365.ps1"]
