@@ -403,6 +403,18 @@ variable "inline" {
   default     = []
 }
 
+variable "inline_horizon" {
+  type        = list(string)
+  description = "A list of commands to run."
+  default     = []
+}
+
+variable "inline_provisioning" {
+  type        = list(string)
+  description = "A list of commands to run."
+  default     = []
+}
+
 // HCP Packer Settings
 
 variable "common_hcp_packer_registry_enabled" {
