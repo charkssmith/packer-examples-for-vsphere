@@ -458,7 +458,7 @@ build {
 
 build {
   sources = [
-    "source.vsphere-iso.windows-desktop-horizon",
+    "source.vsphere-iso.windows-desktop-11-horizon",
   ]
 
   provisioner "powershell" {
@@ -627,7 +627,7 @@ build {
 
 build {
   sources = [
-    "source.vsphere-iso.windows-desktop-prov",
+    "source.vsphere-iso.windows-desktop-11-prov",
   ]
 
   provisioner "powershell" {
