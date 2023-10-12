@@ -763,8 +763,8 @@ menu_option_37() {
 
 
 menu_option_50() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Horizon Enterprise/"
-	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Pro/"
+	echo -e "\nCONFIRM: Build all Windows 11 Pro Templates for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -772,7 +772,7 @@ menu_option_50() {
 	fi
 
 	### Build a Windows 10 Template for VMware vSphere to be used by Horizon. ###
-	echo "Building a Windows 11 Template for VMware vSphere to be used by Horizon..."
+	echo "Building all Windows 11 Pro Templates for VMware vSphere to be used by Horizon..."
 
 	### Initialize HashiCorp Packer and required plugins. ###
 	echo "Initializing HashiCorp Packer and required plugins..."
@@ -1109,7 +1109,7 @@ until [ "$selection" = "0" ]; do
 	echo ""
 	echo "      Horizon Templates:"
 	echo ""
-	echo "    	50  -  Windows 11 for Horizon Enterprise"
+	echo "    	50  -  Windows 11 Pro for Horizon (Base, Horizon & Provisioning)"
 	echo "    	51  -  Windows 11 for Horizon Pro"
 	echo "    	52  -  Windows 11 for Horizon Enterprise Profiler"
 	echo "    	53  -  Windows 11 for Horizon Pro Profiler"
