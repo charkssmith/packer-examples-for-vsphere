@@ -9,7 +9,7 @@ Set-Location $env:TEMP
 
 Try 
 {
-  Start-Process $installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
+  Start-Process $env:TEMP\$installer -ArgumentList $listConfig -PassThru -Wait -ErrorAction Stop
 }
 Catch
 {
