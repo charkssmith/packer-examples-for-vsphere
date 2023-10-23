@@ -54,9 +54,34 @@ communicator_port    = 5985
 communicator_timeout = "12h"
 
 // Provisioner Settings
-scripts = ["scripts/windows/windows-prepare.ps1", "scripts/windows/powercli.ps1", "scripts/windows/copy-datastoreinstallers.ps1",  "scripts/windows/horizon/agent.ps1", "scripts/windows/horizon/appvolumes.ps1", "scripts/windows/horizon/dem.ps1", "scripts/windows/horizon/fslogix.ps1", "scripts/windows/o365.ps1", "scripts/windows/teams.ps1", "scripts/windows/bginfo.ps1", "scripts/windows/rsat.ps1"]
+scripts = ["scripts/windows/windows-prepare.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
+
+inline_horizon = [
+  "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+  "choco feature enable -n allowGlobalConfirmation",
+// Install FSLogix
+  "choco install fslogix",
+// Install OneDrive
+  "choco install onedrive",
+// Install Microsoft Teams
+  "choco install microsoft-teams.install",
+// Install FireFox
+  "choco install firefox",
+// Install Google Chrome
+  "choco install googlechrome",
+// Install Adobe Reader
+  "choco install adobereader",
+// Install BGInfo
+  "choco install bginfo",
+  "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
+]
+
+inline_provisioning = [
+  "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+  "choco feature enable -n allowGlobalConfirmation",
+  "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
