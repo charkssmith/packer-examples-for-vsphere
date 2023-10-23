@@ -714,7 +714,7 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osot.ps1"])
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osotprov.ps1"])
   }
 
   provisioner "powershell" {
