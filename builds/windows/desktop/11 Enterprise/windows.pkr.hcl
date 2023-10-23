@@ -696,7 +696,7 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/dem.ps1"])
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/demprofiler.ps1"])
   }
 
   provisioner "powershell" {

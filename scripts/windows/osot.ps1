@@ -5,7 +5,8 @@ $utilities = @('sdelete64.exe', 'LGPO.exe')
 $exe = $osotfiles[0]
 $json = $osotfiles[1]
 
-$arg = "-o -v -applyoptimization $env:TEMP\$json -f 0 1 3 4 5 6 8 9 10"
+##$arg = "-o -v -applyoptimization $env:TEMP\$json -f 0 1 3 4 5 6 8 9 10"
+$arg = "-o recommended -v -notification disable -visualeffect performance -windowsupdate disable -storeapp remove-all --exclude stickynotes webextension calculator -f 0 1 3 4 5 6 8 9 10"
 
   ForEach ($utility in $utilities){
     Copy-Item $env:TEMP\$utility C:\Windows\System32\$utility
