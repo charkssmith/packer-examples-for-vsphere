@@ -678,15 +678,6 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/agent.ps1"])
-  }
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/appvolumes.ps1"])
   }
 
@@ -697,6 +688,15 @@ build {
     elevated_user     = var.build_username
     elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/demprofiler.ps1"])
+  }
+
+  provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/o365.ps1"])
   }
 
   provisioner "powershell" {
