@@ -377,88 +377,8 @@ source "vsphere-iso" "windows-desktop-11-prov" {
 build {
   sources = [
     "source.vsphere-iso.windows-desktop-11",
-  ]
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}",
-      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", var.scripts)
-  }
-
-  provisioner "powershell" {
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    inline            = var.inline
-  }
-
-  provisioner "windows-update" {
-    pause_before    = "30s"
-    search_criteria = "IsInstalled=0"
-    filters = [
-      "exclude:$_.Title -like '*VMware*'",
-      "exclude:$_.Title -like '*Preview*'",
-      "exclude:$_.Title -like '*Defender*'",
-      "exclude:$_.InstallationBehavior.CanRequestUserInput",
-      "include:$true"
-    ]
-    restart_timeout = "360m"
-  }
-
-  post-processor "manifest" {
-    output     = local.manifest_output
-    strip_path = true
-    strip_time = true
-    custom_data = {
-      build_username           = var.build_username
-      build_date               = local.build_date
-      build_version            = local.build_version
-      common_data_source       = var.common_data_source
-      common_vm_version        = var.common_vm_version
-      vm_cpu_cores             = var.vm_cpu_cores
-      vm_cpu_count             = var.vm_cpu_count
-      vm_disk_size             = var.vm_disk_size
-      vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
-      vm_firmware              = var.vm_firmware
-      vm_guest_os_type         = var.vm_guest_os_type
-      vm_mem_size              = var.vm_mem_size
-      vm_network_card          = var.vm_network_card
-      vm_video_memory          = var.vm_video_mem_size
-      vm_video_displays        = var.vm_video_displays
-      vm_vtpm                  = var.vm_vtpm
-      vsphere_cluster          = var.vsphere_cluster
-      vsphere_datacenter       = var.vsphere_datacenter
-      vsphere_datastore        = var.vsphere_datastore
-      vsphere_endpoint         = var.vsphere_endpoint
-      vsphere_folder           = var.vsphere_folder
-    }
-  }
-
-  dynamic "hcp_packer_registry" {
-    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
-    content {
-      bucket_name = local.bucket_name
-      description = local.bucket_description
-      bucket_labels = {
-        "os_family" : var.vm_guest_os_family,
-        "os_name" : var.vm_guest_os_name,
-        "os_version" : var.vm_guest_os_version,
-        "os_edition" : var.vm_guest_os_edition,
-      }
-      build_labels = {
-        "build_version" : local.build_version,
-        "packer_version" : packer.version,
-      }
-    }
-  }
-}
-
-build {
-  sources = [
     "source.vsphere-iso.windows-desktop-11-horizon",
+    "source.vsphere-iso.windows-desktop-11-prov",
   ]
 
   provisioner "powershell" {
@@ -491,6 +411,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon","source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -500,6 +421,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon","source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
       "VSPHERE_ENDPOINT=${var.vsphere_endpoint}",
@@ -513,6 +435,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -522,6 +445,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -531,6 +455,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -540,148 +465,7 @@ build {
   }
 
   provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/o365.ps1"])
-  }
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osot.ps1"])
-  }
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sdelete.ps1"])
-  }  
-  
-
-
-  post-processor "manifest" {
-    output     = local.manifest_output
-    strip_path = true
-    strip_time = true
-    custom_data = {
-      build_username           = var.build_username
-      build_date               = local.build_date
-      build_version            = local.build_version
-      common_data_source       = var.common_data_source
-      common_vm_version        = var.common_vm_version
-      vm_cpu_cores             = var.vm_cpu_cores
-      vm_cpu_count             = var.vm_cpu_count
-      vm_disk_size             = var.vm_disk_size
-      vm_disk_thin_provisioned = var.vm_disk_thin_provisioned
-      vm_firmware              = var.vm_firmware
-      vm_guest_os_type         = var.vm_guest_os_type
-      vm_mem_size              = var.vm_mem_size
-      vm_network_card          = var.vm_network_card
-      vm_video_memory          = var.vm_video_mem_size
-      vm_video_displays        = var.vm_video_displays
-      vm_vtpm                  = var.vm_vtpm
-      vsphere_cluster          = var.vsphere_cluster
-      vsphere_datacenter       = var.vsphere_datacenter
-      vsphere_datastore        = var.vsphere_datastore
-      vsphere_endpoint         = var.vsphere_endpoint
-      vsphere_folder           = var.vsphere_folder
-    }
-  }
-
-  dynamic "hcp_packer_registry" {
-    for_each = var.common_hcp_packer_registry_enabled ? [1] : []
-    content {
-      bucket_name = local.bucket_name
-      description = local.bucket_description
-      bucket_labels = {
-        "os_family" : var.vm_guest_os_family,
-        "os_name" : var.vm_guest_os_name,
-        "os_version" : var.vm_guest_os_version,
-        "os_edition" : var.vm_guest_os_edition,
-      }
-      build_labels = {
-        "build_version" : local.build_version,
-        "packer_version" : packer.version,
-      }
-    }
-  }
-}
-
-build {
-  sources = [
-    "source.vsphere-iso.windows-desktop-11-prov",
-  ]
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}",
-      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", var.scripts)
-  }
-
-  provisioner "powershell" {
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    inline            = var.inline_provisioning
-  }
-
-  provisioner "windows-update" {
-    pause_before    = "30s"
-    search_criteria = "IsInstalled=0"
-    filters = [
-      "exclude:$_.Title -like '*VMware*'",
-      "exclude:$_.Title -like '*Preview*'",
-      "exclude:$_.Title -like '*Defender*'",
-      "exclude:$_.InstallationBehavior.CanRequestUserInput",
-      "include:$true"
-    ]
-    restart_timeout = "360m"
-  }
-
-    provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/powercli.ps1"])
-  }
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}",
-      "VSPHERE_ENDPOINT=${var.vsphere_endpoint}",
-      "VSPHERE_USERNAME=${var.vsphere_username}",
-      "VSPHERE_PASSWORD=${var.vsphere_password}",
-      "SOFTWARE_DATASTORE=${var.common_iso_datastore}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/copy-datastoreinstallers.ps1"])
-  }
-
-  provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/appvolumestools.ps1"])
-  }
-
-  provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -691,6 +475,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon","source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -700,6 +485,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon","source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -709,6 +495,7 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon","source.vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -716,6 +503,8 @@ build {
     elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sdelete.ps1"])
   }  
+  
+
 
   post-processor "manifest" {
     output     = local.manifest_output
