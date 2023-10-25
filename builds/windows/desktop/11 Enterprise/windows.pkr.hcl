@@ -392,9 +392,24 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11"]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    inline            = var.inline
+  }
+
+  provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-horizon"]
     elevated_user     = var.build_username
     elevated_password = var.build_password
     inline            = var.inline_horizon
+  }
+
+  provisioner "powershell" {
+    only = ["source.vsphere-iso.windows-desktop-11-prov"]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    inline            = var.inline_provisioning
   }
 
   provisioner "windows-update" {
