@@ -80,7 +80,7 @@ Write-Output "Disabling Power Options..."
 #New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E" -Name "ACSettingIndex" -Value 0 | Out-Null
 #New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e" -Name "ACSettingIndex" -Value 0 | Out-Null
 #New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364" -Name "ACSettingIndex" -Value 0 | Out-Null
-Set-Service -Name "Power" -Status stopped -StartupType disabled
+#Set-Service -Name "Power" -Status stopped -StartupType disabled
 powercfg -change -disk-timeout-ac 0
 powercfg -change -disk-timeout-dc 0
 powercfg -H OFF
