@@ -5,7 +5,7 @@ $utilities = @('sdelete64.exe', 'LGPO.exe')
 $exe = $osotfiles[0]
 $json = $osotfiles[1]
 
-$arg = "-o -v -f 0 1 2 3 4 5 6 8 9 10 -r c:\reports\"
+$arg = "-v -f 0 1 2 3 4 5 6 8 9 10 -r c:\reports\"
 
   ForEach ($utility in $utilities){
     Copy-Item $env:TEMP\$utility C:\Windows\System32\$utility
