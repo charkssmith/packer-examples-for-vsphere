@@ -70,7 +70,20 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" 
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 0
 Enable-NetFirewallRule -Group '@FirewallAPI.dll,-28752'
 
-# Disable Hibernation
-Write-Output "Disabling Hibernation..."
-powercfg -h off
+# Disable Power Options
+Write-Output "Disabling Power Options..."
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\309dce9b-bef4-4119-9921-a851fb12f0f4" -Name "ACSettingIndex" -Value 0 | Out-Null
+New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\0012ee47-9041-4b5d-9b77-535fba8b1442\6738e2c4-e8a5-4a42-b16a-e040e769756e" -Name "Attributes" -Value 1 | Out-Null
+New-Item -Path "HKLM:\Software\Policies\Microsoft\Power\PowerSettings" -Name "ActivePowerScheme" -Value "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" | Out-Null
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA" -Name "ACSettingIndex" -Value 0 | Out-Null
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E" -Name "ACSettingIndex" -Value 0 | Out-Null
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E" -Name "ACSettingIndex" -Value 0 | Out-Null
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e" -Name "ACSettingIndex" -Value 0 | Out-Null
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364" -Name "ACSettingIndex" -Value 0 | Out-Null
+sc config Power start=disabled
+powercfg -change -disk-timeout-ac 0
+powercfg -change -disk-timeout-dc 0
+powercfg -H OFF
+powercfg -change -monitor-timeout-ac 0
+powercfg -change -monitor-timeout-dc 0
 
