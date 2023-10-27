@@ -6,6 +6,6 @@ $configFile = "bgconfig.bgi"
 $targetFolder = "C:\Program Files\Bginfo"
 New-Item $targetFolder -Itemtype Directory
 
-ForEach ($file in $configFile) {
+ForEach ($file in $installer,$configFile) {
     Copy-Item -Path $env:TEMP\$file -Destination $targetFolder\$file
     }
