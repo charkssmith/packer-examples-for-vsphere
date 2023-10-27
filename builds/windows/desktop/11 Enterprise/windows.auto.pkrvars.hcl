@@ -70,8 +70,6 @@ inline_horizon = [
   "choco install onedrive",
 // Install Microsoft Teams
   "choco install microsoft-teams.install",
-// Install BGInfo
-  "choco install bginfo",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
 
@@ -80,7 +78,5 @@ inline_provisioning = [
   "choco feature enable -n allowGlobalConfirmation",
 // Install Microsoft Teams
   "choco install microsoft-teams.install",
-// Install BGInfo
-  "choco install bginfo",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
