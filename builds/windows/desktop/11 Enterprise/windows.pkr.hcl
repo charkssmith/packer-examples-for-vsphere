@@ -516,17 +516,7 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osotoptimizenogpu.ps1"])
-  }
-
-  provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osotfinalize.ps1"])
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osot.ps1"])
   }
 
   provisioner "powershell" {
