@@ -175,9 +175,10 @@ build {
   }
 
   provisioner "powershell" {
+    only = ["vsphere-iso.windows-desktop-11"]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    inline            = var.inline
+    inline            = var.inline-sds
   }
 
   provisioner "windows-update" {
@@ -190,7 +191,16 @@ build {
       "exclude:$_.InstallationBehavior.CanRequestUserInput",
       "include:$true"
     ]
-    restart_timeout = "120m"
+    restart_timeout = "360m"
+  }
+
+  provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/powercli.ps1"])
   }
 
   provisioner "powershell" {
@@ -203,18 +213,28 @@ build {
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osot.ps1"])
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/copy-datastoreinstallers.ps1"])
   }
  
-    
-    provisioner "powershell" {
+  provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/osotsds.ps1"])
+  }
+
+  provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
     elevated_user     = var.build_username
     elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sdelete.ps1"])
-  }
+  }  
+  
+
 
   post-processor "manifest" {
     output     = local.manifest_output

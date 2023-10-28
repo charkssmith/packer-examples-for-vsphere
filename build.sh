@@ -905,7 +905,7 @@ menu_option_80() {
 }
 
 menu_option_81() {
-	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Enterprise/"
+	INPUT_PATH="$SCRIPT_PATH""/builds/windows/desktop/11 Enterprise SDS/"
 	echo -e "\nCONFIRM: Build a Windows 11 Template for VMware vSphere to be used by Horizon?"
 	echo -e "\nContinue? (y/n)"
 	read -r REPLY
@@ -923,7 +923,6 @@ menu_option_81() {
 	### Start the Build. ###
 	echo "Starting the build...."
 	packer build -force \
-	    --only vsphere-iso.windows-desktop-11-sds \
 		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \

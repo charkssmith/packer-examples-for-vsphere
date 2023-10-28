@@ -60,11 +60,14 @@ scripts = ["scripts/windows/windows-prepare.ps1"]
 inline = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
-  "choco install vmware-powercli-psmodule",
+// Install RVTools
   "choco install rvtools",
+// Install Remote Desktop Manager
   "choco install rdm",
-  "choco install notepadplusplus.install",
-  "choco install vmrc",
+// Install Postman
   "choco install postman",
+// Install Putty
+  "choco install putty",
+// Install Notepad++
+  "choco install notepadplusplus",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
-]
