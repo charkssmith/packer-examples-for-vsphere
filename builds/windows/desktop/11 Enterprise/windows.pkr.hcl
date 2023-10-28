@@ -766,6 +766,15 @@ build {
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/copy-datastoreinstallers.ps1"])
   }
  
+   provisioner "powershell" {
+    environment_vars = [
+      "BUILD_USERNAME=${var.build_username}"
+    ]
+    elevated_user     = var.build_username
+    elevated_password = var.build_password
+    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sds/vpnclients.ps1"])
+  }
+
   provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
