@@ -714,21 +714,7 @@ build {
     only = ["vsphere-iso.windows-desktop-11"]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    inline            = var.inline
-  }
-
-  provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon"]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    inline            = var.inline_horizon
-  }
-
-  provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-prov"]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    inline            = var.inline_sds
+    inline            = var.inline-sds
   }
 
   provisioner "windows-update" {
@@ -766,15 +752,6 @@ build {
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/copy-datastoreinstallers.ps1"])
   }
  
-   provisioner "powershell" {
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sds/vpnclients.ps1"])
-  }
-
   provisioner "powershell" {
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
