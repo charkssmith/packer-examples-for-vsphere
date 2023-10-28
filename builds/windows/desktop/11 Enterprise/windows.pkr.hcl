@@ -728,7 +728,7 @@ build {
     only = ["vsphere-iso.windows-desktop-11-prov"]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    inline            = var.inline_provisioning
+    inline            = var.inline_sds
   }
 
   provisioner "windows-update" {
@@ -754,7 +754,6 @@ build {
   }
 
   provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}",
       "VSPHERE_ENDPOINT=${var.vsphere_endpoint}",
@@ -768,7 +767,6 @@ build {
   }
  
   provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
@@ -778,7 +776,6 @@ build {
   }
 
   provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]
