@@ -71,3 +71,4 @@ inline = [
 // Install Notepad++
   "choco install notepadplusplus",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
+]
