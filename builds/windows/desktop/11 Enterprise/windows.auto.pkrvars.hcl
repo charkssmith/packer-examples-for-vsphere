@@ -80,3 +80,19 @@ inline_provisioning = [
   "choco install microsoft-teams.install",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
+
+inline_sds = [
+  "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
+  "choco feature enable -n allowGlobalConfirmation",
+// Install RVTools
+  "choco install rvtools",
+// Install Remote Desktop Manager
+  "choco install rdm",
+// Install Postman
+  "choco install postman",
+// Install Putty
+  "choco install putty",
+// Install Notepad++
+  "choco install notepadplusplus",
+  "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
+]
