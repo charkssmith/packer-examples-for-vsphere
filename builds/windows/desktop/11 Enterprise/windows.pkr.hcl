@@ -524,7 +524,7 @@ build {
     only = ["vsphere-iso.windows-desktop-11-sds"]
     elevated_user     = var.build_username
     elevated_password = var.build_password
-    inline            = var.inline_provisioning
+    inline            = var.inline_sds
   }
 
 
