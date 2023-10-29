@@ -923,6 +923,7 @@ menu_option_81() {
 	### Start the Build. ###
 	echo "Starting the build...."
 	packer build -force \
+		--only vsphere-iso.windows-desktop-11-sds \
 		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
 		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
