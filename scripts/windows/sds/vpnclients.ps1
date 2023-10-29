@@ -1,5 +1,6 @@
   $ErrorActionPreference = "Stop"
 
+
   Try 
   {
     Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
@@ -11,6 +12,18 @@
     Exit -1 
   }
 
+  Try 
+  {
+    New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows" -Name "AppInstaller" | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\AppInstaller" -Name "EnableBypassCertificatePinningForMicrosoftStore" -Value 1 | Out-Null
+  }
+  Catch
+  {
+    Write-Error "Failed to add EnableBypassCertificatePinningForMicrosoftStore"
+    Write-Error $_.Exception
+    Exit -1 
+  }
+   
   Try 
   {
     Start-Process winget -ArgumentList "install -e -i --id=9WZDNCRDH6MC --source=msstore --accept-package-agreements --accept-source-agreements"
