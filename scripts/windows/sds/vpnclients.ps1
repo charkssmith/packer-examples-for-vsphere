@@ -3,7 +3,7 @@
 
   Try 
   {
-    Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.4.10173/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
+    Add-AppxPackage -Path 'https://github.com/microsoft/winget-cli/releases/download/v1.6.2771/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'
   }
   Catch
   {
@@ -39,9 +39,7 @@
 
   Try 
   {
-    Add-VpnConnection -Name "Laredo Community College" -ServerAddress "lccaccess.laredo.edu" -PlugInApplicationID "CiscoSystems.AnyConnect_edjcgkw48dhxt"
-    Add-VpnConnection -Name "McCombs" -ServerAddress "https://meportal.mccombsplaza.net:10443" -PlugInApplicationID "FortinetInc.FortiClient_sq9g7krz3c65j"
-    Add-VpnConnection -Name "Little Rock School District" -ServerAddress "lrsdasa.lrsd.org" -PlugInApplicationID "CiscoSystems.AnyConnect_edjcgkw48dhxt"
+    Copy-Item $env:TEMP\rasphone.pbk C:\ProgramData\Microsoft\Network\Connections\Pbk
   }
   Catch
   {
