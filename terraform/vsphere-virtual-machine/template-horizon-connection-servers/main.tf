@@ -34,8 +34,12 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
+locals {
+ instances = csvdecode(file("./test.csv"))
+}
+
 resource "vsphere_virtual_machine" "vm" {
-  name                    = var.vm_name
+  name                    = "${local.instances[count.index].ConnectionServer}"
   folder                  = var.vsphere_folder
   num_cpus                = var.vm_cpus
   memory                  = var.vm_memory
@@ -57,14 +61,14 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
       windows_options {
-        computer_name         = var.vm_name
+        computer_name         = "${local.instances[count.index].ConnectionServer}"
         join_domain           = var.domain
         domain_admin_user     = var.domain_admin_username
         domain_admin_password = var.domain_admin_password
         admin_password        = var.vm_admin_password
       }
       network_interface {
-        ipv4_address = var.vm_ipv4_address
+        ipv4_address = "${local.instances[count.index].IP}"
         ipv4_netmask = var.vm_ipv4_netmask
       }
 
