@@ -37,7 +37,7 @@ data "vsphere_virtual_machine" "template" {
 locals {
   csv_data   = file("${path.module}/test.csv")
   vminfo     = csvdecode(local.csv_data)
-  csinfo_map = { for cs in local.vminfo : cs.ConnectionServer => cs } #covert CSV data to map
+  vminfo_map = { for vm in local.vminfo : vm.ConnectionServer => vm } #covert CSV data to map
 }
 
 resource "vsphere_virtual_machine" "vm" {
