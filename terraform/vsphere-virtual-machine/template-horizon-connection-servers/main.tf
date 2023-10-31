@@ -41,7 +41,7 @@ locals {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  for_each                = local.csinfo_map
+  for_each                = local.vminfo_map
   name                    = each.value.ConnectionServer
   folder                  = var.vsphere_folder
   num_cpus                = var.vm_cpus
