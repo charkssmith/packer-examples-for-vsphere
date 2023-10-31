@@ -88,3 +88,19 @@ resource "vsphere_virtual_machine" "vm" {
   }
   
 }
+
+resource "null_resource" "provision_web" {
+
+  connection {
+    host     = each.value.IPAddress
+    type     = "winrm"
+    user     = var.domain_admin_username
+    password = var.domain_admin_password
+  }
+
+  provisioner "file" {
+    source      = "/Users/charliesmith/Downloads/VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
+    destination = "C:/"
+  }
+
+}
