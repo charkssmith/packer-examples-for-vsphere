@@ -35,12 +35,14 @@ data "vsphere_virtual_machine" "template" {
 }
 
 locals {
- instances = csvdecode(file("./test.csv"))
+  csv_data   = file("${path.module}/test.csv")
+  vminfo     = csvdecode(local.csv_data)
+  csinfo_map = { for cs in local.vminfo : cs.ConnectionServer => cs } #covert CSV data to map
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  count = length(local.instances)
-  name                    = "${local.instances[count.index].ConnectionServer}"
+  for_each                = local.csinfo_map
+  name                    = each.value.ConnectionServer
   folder                  = var.vsphere_folder
   num_cpus                = var.vm_cpus
   memory                  = var.vm_memory
@@ -62,14 +64,14 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
       windows_options {
-        computer_name         = "${local.instances[count.index].ConnectionServer}"
+        computer_name         = each.value.ConnectionServer
         join_domain           = var.domain
         domain_admin_user     = var.domain_admin_username
         domain_admin_password = var.domain_admin_password
         admin_password        = var.vm_admin_password
       }
       network_interface {
-        ipv4_address = "${local.instances[count.index].IP}"
+        ipv4_address = each.value.IP
         ipv4_netmask = var.vm_ipv4_netmask
       }
 
