@@ -90,7 +90,7 @@ resource "vsphere_virtual_machine" "vm" {
 }
 
 resource "null_resource" "provision_web" {
-
+  for_each                = local.csinfo_map
   connection {
     host     = each.value.IPAddress
     type     = "winrm"
