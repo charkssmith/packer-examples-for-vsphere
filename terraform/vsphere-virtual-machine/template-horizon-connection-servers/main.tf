@@ -39,6 +39,7 @@ locals {
 }
 
 resource "vsphere_virtual_machine" "vm" {
+  count = length(local.instances)
   name                    = "${local.instances[count.index].ConnectionServer}"
   folder                  = var.vsphere_folder
   num_cpus                = var.vm_cpus
