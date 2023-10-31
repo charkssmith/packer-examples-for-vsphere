@@ -37,15 +37,15 @@ data "vsphere_virtual_machine" "template" {
 locals {
   csv_data   = file("${path.module}/test.csv")
   vminfo     = csvdecode(local.csv_data)
-  vminfo_map = { for vm in local.vminfo : vm.ConnectionServer => vm } #covert CSV data to map
+  vminfo_map = { for cs in local.vminfo : cs.ConnectionServer => cs } #covert CSV data to map
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  for_each                = local.vminfo_map
+  for_each                = local.csinfo_map
   name                    = each.value.ConnectionServer
   folder                  = var.vsphere_folder
-  num_cpus                = var.vm_cpus
-  memory                  = var.vm_memory
+  num_cpus                = each.value.CPU
+  memory                  = each.value.Memory
   firmware                = var.vm_firmware
   efi_secure_boot_enabled = var.vm_efi_secure_boot_enabled
   guest_id                = data.vsphere_virtual_machine.template.guest_id
