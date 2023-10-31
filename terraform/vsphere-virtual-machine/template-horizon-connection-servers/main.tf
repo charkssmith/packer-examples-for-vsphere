@@ -71,7 +71,7 @@ resource "vsphere_virtual_machine" "vm" {
         admin_password        = var.vm_admin_password
       }
       network_interface {
-        ipv4_address = each.value.IP
+        ipv4_address = each.value.IPAddress
         ipv4_netmask = var.vm_ipv4_netmask
       }
 
