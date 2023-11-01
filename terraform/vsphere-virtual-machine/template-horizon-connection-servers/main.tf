@@ -89,7 +89,7 @@ resource "vsphere_virtual_machine" "vm" {
  
   provisioner "file" {
     source      = "\\\\synology.thesmiths.pw\\Software\\VMware\\Horizon\\2309\\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
-    destination = "C:/"
+    destination = "C:\"
 
     connection {
     host     = each.value.IPAddress
