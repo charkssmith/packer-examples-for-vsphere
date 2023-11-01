@@ -19,7 +19,7 @@ vsphere_network    = "w01-172.16.100.0"
 vsphere_template   = "windows-server-2022-standard"
 
 # Virtual Machines Settings
-d
+
 vm_name                    = "windows-server"
 vm_cpus                    = 2
 vm_memory                  = 4096
@@ -36,3 +36,8 @@ domain                     = "rainpole.io"
 domain_admin_username      = "svc-domain-join@rainpole.io"
 domain_admin_password      = "VMware1!"
 vm_admin_password          = "VMware1!"
+
+# Horizon Install Settings
+
+remote_location_cs_install = "\\file\share\remote_location_cs_install_exe
+local_location_cs_install = "C:/Temp/local_location_cs_install_exe

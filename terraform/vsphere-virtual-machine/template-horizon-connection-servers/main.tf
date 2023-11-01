@@ -94,8 +94,9 @@ resource "vsphere_virtual_machine" "vm" {
     password = var.domain_admin_password
   }
 
-  provisioner "file" {
-    source      = "\\\\synology.thesmiths.pw\\Software\\VMware\\Horizon\\2309\\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
-    destination = "C:/Temp/VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
-  }
+  provisioner "local-exec" {
+  command = "Copy-Item -Path \\synology.thesmiths.pw\Software\VMware\Horizon\2309\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe -Destination C:\Temp"
+
+  interpreter = ["PowerShell", "-Command"]
+}
 }
