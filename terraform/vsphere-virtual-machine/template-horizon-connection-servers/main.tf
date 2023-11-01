@@ -89,12 +89,12 @@ resource "vsphere_virtual_machine" "vm" {
   connection {
     host     = each.value.IPAddress
     type     = "winrm"
-    user     = "alex"
-    password = "alexiscool1!"
+    user     = var.domain_admin_username
+    password = var.domain_admin_password
   }
 
   provisioner "file" {
-    source      = "/Users/charliesmith/Downloads/VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
+    source      = "\\synology.thesmiths.pw\Software\VMware\Horizon\2309VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
     destination = "C:\Temp\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
   }
 }
