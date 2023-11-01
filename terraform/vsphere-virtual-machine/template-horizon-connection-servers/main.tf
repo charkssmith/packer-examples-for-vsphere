@@ -89,6 +89,7 @@ resource "vsphere_virtual_machine" "vm" {
   connection {
     host     = each.value.IPAddress
     type     = "winrm"
+    insecure = true
     user     = var.domain_admin_username
     password = var.domain_admin_password
   }
