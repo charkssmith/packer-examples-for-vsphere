@@ -86,17 +86,18 @@ resource "vsphere_virtual_machine" "vm" {
       clone[0].template_uuid,
     ]
   }
-  connection {
+ 
+  provisioner "file" {
+    source      = "\\\\synology.thesmiths.pw\\Software\\VMware\\Horizon\\2309\\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
+    destination = "C:/"
+
+    connection {
     host     = each.value.IPAddress
     type     = "winrm"
     insecure = true
     user     = var.domain_admin_username
     password = var.domain_admin_password
-  }
- 
-  provisioner "file" {
-    source      = "\\\\synology.thesmiths.pw\\Software\\VMware\\Horizon\\2309\\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
-    destination = "C:/"
+    }
   }
 
 }
