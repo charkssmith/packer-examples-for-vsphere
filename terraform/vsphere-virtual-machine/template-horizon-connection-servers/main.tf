@@ -86,5 +86,15 @@ resource "vsphere_virtual_machine" "vm" {
       clone[0].template_uuid,
     ]
   }
-  
+  connection {
+    host     = each.value.IPAddress
+    type     = "winrm"
+    user     = "alex"
+    password = "alexiscool1!"
+  }
+
+  provisioner "file" {
+    source      = "/Users/charliesmith/Downloads/VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
+    destination = "C:\Temp\VMware-Horizon-Connection-Server-x86_64-8.11.0-22629722.exe"
+  }
 }
