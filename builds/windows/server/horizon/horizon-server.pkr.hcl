@@ -68,6 +68,13 @@ source "vsphere-clone" "vsphere" {
   datastore  = var.vsphere_datastore
   folder     = var.vsphere_folder
 
+  // Communicator Settings and Credentials
+  communicator   = "winrm"
+  winrm_username = var.build_username
+  winrm_password = var.build_password
+  winrm_port     = var.communicator_port
+  winrm_timeout  = var.communicator_timeout
+
 }
 
 //  BLOCK: build
