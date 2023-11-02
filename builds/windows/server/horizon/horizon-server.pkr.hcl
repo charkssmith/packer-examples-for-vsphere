@@ -64,6 +64,10 @@ source "vsphere-clone" "vsphere" {
 
   // vSphere Settings
   datacenter = var.vsphere_datacenter
+  cluster    = var.vsphere_cluster
+  datastore  = var.vsphere_datastore
+  folder     = var.vsphere_folder
+
 }
 
 //  BLOCK: build
