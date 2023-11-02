@@ -86,18 +86,21 @@ resource "vsphere_virtual_machine" "vm" {
       clone[0].template_uuid,
     ]
   }
-  
+  connection {
+    host     = each.value.IPAddress
+    type     = "winrm"
+    port     = 5985
+    https    = false
+    timeout  = "2m"
+    user     = var.domain_admin_username
+    password = var.domain_admin_password
+  }
+
   provisioner "file" {
     source      = "copyinstaller.ps1"
     destination = "C:\\"
   }
-    connection {
-    host     = each.value.IPAddress
-    type     = "winrm"
-    insecure = true
-    user     = "thesmiths\\charks"
-    password = "C00pTh@Crumps!"
-    }
-  }
+
+}
 
 
