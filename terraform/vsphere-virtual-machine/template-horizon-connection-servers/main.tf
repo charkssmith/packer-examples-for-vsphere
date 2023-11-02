@@ -90,7 +90,7 @@ resource "vsphere_virtual_machine" "vm" {
   provisioner "file" {
     source      = "copyinstallers.ps1"
     destination = "C:\"
-
+  }
     connection {
     host     = each.value.IPAddress
     type     = "winrm"
@@ -100,4 +100,4 @@ resource "vsphere_virtual_machine" "vm" {
     }
   }
 
-}
+
