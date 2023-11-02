@@ -92,6 +92,7 @@ resource "vsphere_virtual_machine" "vm" {
     port     = 5985
     https    = false
     timeout  = "2m"
+    use_ntlm = true
     user     = var.domain_admin_username
     password = var.domain_admin_password
   }
