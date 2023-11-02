@@ -95,7 +95,7 @@ resource "vsphere_virtual_machine" "vm" {
     host     = each.value.IPAddress
     type     = "winrm"
     insecure = true
-    user     = "thesmiths\charks"
+    user     = "thesmiths\\charks"
     password = "C00pTh@Crumps!"
     }
   }
