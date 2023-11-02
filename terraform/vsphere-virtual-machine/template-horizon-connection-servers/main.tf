@@ -90,7 +90,6 @@ resource "vsphere_virtual_machine" "vm" {
     host     = each.value.IPAddress
     type     = "winrm"
     port     = 5985
-    https    = false
     timeout  = "2m"
     use_ntlm = true
     https        = false
