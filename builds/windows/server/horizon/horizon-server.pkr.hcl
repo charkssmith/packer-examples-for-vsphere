@@ -72,7 +72,6 @@ source "vsphere-clone" "vsphere" {
 build {
   source "sources.vsphere-clone.vsphere"{
     cluster = "TheClover"
-    resource_pool = "TheClover"
 
     network = "Servers"
     template = "windows-server-2022-standard-dexp-main"
