@@ -89,7 +89,7 @@ resource "vsphere_virtual_machine" "vm" {
   
   provisioner "file" {
     source      = "copyinstallers.ps1"
-    destination = "C:\"
+    destination = "C:\\"
   }
     connection {
     host     = each.value.IPAddress
