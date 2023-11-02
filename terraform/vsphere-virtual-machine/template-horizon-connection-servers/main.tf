@@ -93,6 +93,8 @@ resource "vsphere_virtual_machine" "vm" {
     https    = false
     timeout  = "2m"
     use_ntlm = true
+    https        = false
+    insecure     = true
     user     = var.domain_admin_username
     password = var.domain_admin_password
   }
