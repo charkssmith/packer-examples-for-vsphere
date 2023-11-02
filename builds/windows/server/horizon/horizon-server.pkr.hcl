@@ -61,6 +61,9 @@ source "vsphere-clone" "vsphere" {
   username            = var.vsphere_username
   password            = var.vsphere_password
   insecure_connection = var.vsphere_insecure_connection
+
+  // vSphere Settings
+  datacenter = var.vsphere_datacenter
 }
 
 //  BLOCK: build
