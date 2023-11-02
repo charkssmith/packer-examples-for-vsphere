@@ -88,7 +88,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
   
   provisioner "file" {
-    source      = "copyinstallers.ps1"
+    source      = "copyinstaller.ps1"
     destination = "C:\\"
   }
     connection {
