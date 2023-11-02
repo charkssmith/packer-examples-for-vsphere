@@ -99,7 +99,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
 
   provisioner "file" {
-    source      = "copyinstaller.ps1"
+    source      = "/home/charlie/packer-examples-for-vsphere/terraform/vsphere-virtual-machine/template-horizon-connection-servers/copyinstaller.ps1"
     destination = "C:\\"
   }
 
