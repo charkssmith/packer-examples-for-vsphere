@@ -160,7 +160,7 @@ source "vsphere-clone" "vsphere" {
 //  BLOCK: build
 //  Defines the builders to run, provisioners, and post-processors.
 
-build{
+build {
   source "sources.vsphere-clone.vsphere"{
     cluster = "TheClover"
     resource_pool = "TheClover"
@@ -169,4 +169,5 @@ build{
     template = "windows-server-2022-standard-dexp-main"
     vm_name = "packer_test"
     ssh_username = "root"
+ }
 }
