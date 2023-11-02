@@ -160,12 +160,9 @@ source "vsphere-clone" "vsphere" {
 //  BLOCK: build
 //  Defines the builders to run, provisioners, and post-processors.
 
-build {
-  sources = [
-    "sources.vsphere-clone.vsphere"
-  ]
-
-  cluster = "TheClover"
+build{
+  source "sources.vsphere-clone.vsphere"{
+    cluster = "TheClover"
     resource_pool = "TheClover"
 
     network = "Servers"
