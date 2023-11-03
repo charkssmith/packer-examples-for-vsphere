@@ -130,7 +130,7 @@ source "vsphere-iso" "windows-server-standard-core" {
   winrm_timeout  = var.communicator_timeout
 
   // Template and Content Library Settings
-  convert_to_template = var.common_template_conversion
+  convert_to_template = true
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
@@ -233,7 +233,7 @@ source "vsphere-iso" "windows-server-standard-dexp" {
   winrm_timeout  = var.communicator_timeout
 
   // Template and Content Library Settings
-  convert_to_template = var.common_template_conversion
+  convert_to_template = true
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
@@ -338,7 +338,7 @@ source "vsphere-iso" "windows-server-datacenter-core" {
   winrm_timeout  = var.communicator_timeout
 
   // Template and Content Library Settings
-  convert_to_template = var.common_template_conversion
+  convert_to_template = true
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
@@ -441,7 +441,7 @@ source "vsphere-iso" "windows-server-datacenter-dexp" {
   winrm_timeout  = var.communicator_timeout
 
   // Template and Content Library Settings
-  convert_to_template = var.common_template_conversion
+  convert_to_template = true
   dynamic "content_library_destination" {
     for_each = var.common_content_library_name != null ? [1] : []
     content {
