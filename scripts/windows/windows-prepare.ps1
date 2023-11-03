@@ -87,3 +87,6 @@ powercfg -H OFF
 powercfg -change -monitor-timeout-ac 0
 powercfg -change -monitor-timeout-dc 0
 
+# Set Time Zone
+Set-Timezone -Id "Central Standard Time"
+
