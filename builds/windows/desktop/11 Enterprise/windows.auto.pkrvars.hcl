@@ -91,13 +91,13 @@ inline_provisioning = [
 // Install Microsoft Teams
 //  "choco install microsoft-teams.install",
 // Install Adobe Reader
-  choco install adobereader
+  "choco install adobereader",
 // Install Chrome Enterprise
-  choco install google-chrome-for-enterprise
+  "choco install google-chrome-for-enterprise",
 // Instant Firefox
-  choco install firefoxesr
+  "choco install firefoxesr",
 // Install VLC
-  choco install vlc
+  "choco install vlc",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
 
