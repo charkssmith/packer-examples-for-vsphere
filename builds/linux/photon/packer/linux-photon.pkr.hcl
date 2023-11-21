@@ -161,7 +161,7 @@ source "vsphere-iso" "linux-photon" {
 build {
   sources = ["source.vsphere-iso.linux-photon"]
 
-  provisioner "ansible" {
+    provisioner "ansible" {
     user          = var.build_username
     playbook_file = "${path.cwd}/ansible/packer.yml"
     roles_path    = "${path.cwd}/ansible/roles"

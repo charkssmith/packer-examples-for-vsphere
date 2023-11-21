@@ -1,7 +1,81 @@
 ---
-- name: "Setting hostname to packer."
+- name: "Setting hostname to packer"
   shell: |
     hostnamectl set-hostname packer
-- name: "Setting hostname to packer."
+- name: "Enable SSH"
   shell: |
-    hostnamectl set-hostname packer
+    systemctl enable sshd
+- name: "Start SSH"
+  shell: |
+    systemctl start sshd
+- name: "Install Packer"
+  shell: |
+    PACKER_VERSION="1.9.4"
+    OS_PACKAGES="wget unzip"
+
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
+
+    tdnf install ${OS_PACKAGES} -y
+
+    wget -q https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+
+    unzip -o -d /usr/local/bin/ packer_${PACKER_VERSION}_linux_${LINUX_ARCH}.zip
+- name: "Install Pre-Reqs"
+  shell: |
+    tdnf -y install ansible
+    export PATH="$HOME/.local/bin:$PATH"
+    tdnf -y install git jq xorriso
+- name: "Install Terraform"
+  shell: |
+    TERRAFORM_VERSION="1.6.0"
+    OS_PACKAGES="wget unzip"
+
+    if [[ $(uname -m) == "x86_64" ]]; then
+      LINUX_ARCH="amd64"
+    elif [[ $(uname -m) == "aarch64" ]]; then
+      LINUX_ARCH="arm64"
+    fi
+
+    tdnf install ${OS_PACKAGES} -y
+
+    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+
+    unzip -o -d /usr/local/bin/ terraform_${TERRAFORM_VERSION}_linux_${LINUX_ARCH}.zip
+- name: "Open firewall rules for packer"
+  shell: |
+    iptables -A INPUT -p tcp --match multiport --dports 8000:8099 -j ACCEPT
+    iptables-save > /etc/systemd/scripts/ip4save
+- name: "Set git info"
+  shell: |
+    git config --global user.name "Packer Build"
+    git config --global user.email "packer@packer.com"
+- name: "Clone repository"
+  shell: |
+    TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
+    TARBALL_URL=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
+
+    mkdir packer-examples-for-vsphere
+    cd packer-examples-for-vsphere
+    curl -sL $TARBALL_URL | tar xvfz - --strip-components 1
+    git init -b main
+    git add .
+    git commit -m "Initial commit"
+    git switch -c $TAG_NAME HEAD
+- name: "Update ansible.cf"
+  shell: |
+    chown -R 1000:100 /home/charlie/packer-examples-for-vsphere/
+- name: "Set packer permissions"
+  lineinfile: 
+    dest: /home/charlie/packer-examples-for-vsphere/ansible/ansible.cfg
+    line: 'scp_extra_args = "-O"'
+- name: "Clean Downloads"
+  shell: |
+    rm -rf ./*.zip
+
+
+
+

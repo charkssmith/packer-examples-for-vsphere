@@ -1245,13 +1245,3 @@ until [ "$selection" = "0" ]; do
 		;;
 	esac
 done
-
-
-
-packer build -force \
-        -var-file="/home/charlie/packer-examples-for-vsphere/config/homelab/vsphere.pkrvars.hcl" \
-        -var-file="/home/charlie/packer-examples-for-vsphere/config/homelab/build.pkrvars.hcl" \
-        -var-file="/home/charlie/packer-examples-for-vsphere/config/homelab/ansible.pkrvars.hcl" \
-        -var-file="/home/charlie/packer-examples-for-vsphere/config/homelab/proxy.pkrvars.hcl" \
-        -var-file="/home/charlie/packer-examples-for-vsphere/config/homelab/common.pkrvars.hcl" \
-        "/home/charlie/packer-examples-for-vsphere/builds/windows/server/horizon/"
