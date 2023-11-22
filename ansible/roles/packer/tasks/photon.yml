@@ -55,16 +55,7 @@
     git config --global user.email "packer@packer.com"
 - name: "Clone repository"
   shell: |
-    TAG_NAME=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tag_name')
-    TARBALL_URL=$(curl -s https://api.github.com/repos/vmware-samples/packer-examples-for-vsphere/releases | jq  -r '.[0].tarball_url')
-
-    mkdir packer-examples-for-vsphere
-    cd packer-examples-for-vsphere
-    curl -sL $TARBALL_URL | tar xvfz - --strip-components 1
-    git init -b main
-    git add .
-    git commit -m "Initial commit"
-    git switch -c $TAG_NAME HEAD
+    git clone https://github.com/charkssmith/packer-examples-for-vsphere.git
 - name: "Update ansible.cf"
   shell: |
     chown -R 1000:100 /home/charlie/packer-examples-for-vsphere/

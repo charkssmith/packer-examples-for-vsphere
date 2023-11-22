@@ -408,6 +408,11 @@ source "vsphere-iso" "windows-desktop-11-sds" {
     network      = var.vsphere_network
     network_card = var.vm_network_card
   }
+  configuration_parameters = {
+    "isolation.tools.copy.disable"  = "FALSE"
+    "isolation.tools.paste.disable"  = "FALSE"
+    "isolation.tools.setGUIOptions.enable"  = "TRUE"
+  }
   vm_version           = var.common_vm_version
   remove_cdrom         = var.common_remove_cdrom
   tools_upgrade_policy = var.common_tools_upgrade_policy
