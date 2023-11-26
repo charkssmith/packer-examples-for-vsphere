@@ -581,7 +581,7 @@ build {
   }
 
   provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon", "vsphere-iso.windows-desktop-11-prov"]
+    only = ["vsphere-iso.windows-desktop-11-horizon"]
     environment_vars = [
       "BUILD_USERNAME=${var.build_username}"
     ]

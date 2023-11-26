@@ -3,7 +3,7 @@ $software = "App Volumes Agent*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
-$appVolumesServer = "appvol1a.city.col"
+$appVolumesServer = "av1.thesmiths.pw"
 $listConfig = "/i ""$env:TEMP\$installer"" /qn REBOOT=ReallySuppress MANAGER_ADDR=$appVolumesServer MANAGER_PORT=443 EnforceSSLCertificateValidation=0"
 
 Try 
