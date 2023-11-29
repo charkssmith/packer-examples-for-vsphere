@@ -620,15 +620,15 @@ build {
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/horizon/demprofiler.ps1"])
   }
 
-  provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/o365.ps1"])
-  }
+//  provisioner "powershell" {
+//    only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov"]
+//    environment_vars = [
+//      "BUILD_USERNAME=${var.build_username}"
+//    ]
+//    elevated_user     = var.build_username
+//    elevated_password = var.build_password
+//    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/o365.ps1"])
+//  }
 
   provisioner "powershell" {
     only = ["vsphere-iso.windows-desktop-11-horizon","vsphere-iso.windows-desktop-11-prov","vsphere-iso.windows-desktop-11-sds"]
