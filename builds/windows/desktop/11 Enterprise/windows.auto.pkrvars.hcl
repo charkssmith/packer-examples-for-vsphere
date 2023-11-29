@@ -65,11 +65,19 @@ inline_horizon = [
   "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))",
   "choco feature enable -n allowGlobalConfirmation",
 // Install FSLogix
-  "choco install fslogix",
+//  "choco install fslogix",
 // Install OneDrive
-  "choco install onedrive",
+//  "choco install onedrive",
 // Install Microsoft Teams
-  "choco install microsoft-teams.install",
+//  "choco install microsoft-teams.install",
+// Install Adobe Reader
+  "choco install adobereader",
+// Install Chrome Enterprise
+  "choco install google-chrome-for-enterprise",
+// Instant Firefox
+  "choco install firefoxesr",
+// Install VLC
+  "choco install vlc",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
 
@@ -82,6 +90,14 @@ inline_provisioning = [
 //  "choco install onedrive",
 // Install Microsoft Teams
 //  "choco install microsoft-teams.install",
+// Install Adobe Reader
+  "choco install adobereader",
+// Install Chrome Enterprise
+  "choco install google-chrome-for-enterprise",
+// Instant Firefox
+  "choco install firefoxesr",
+// Install VLC
+  "choco install vlc",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
 
