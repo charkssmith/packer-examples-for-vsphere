@@ -3,7 +3,7 @@ $software = "VMware Dynamic Environment Manager*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
-$listConfig = "/i ""$env:TEMP\$installer""  /qn /norestart COMPENVCONFIGFILEPATH=\\city.col\public\DEM Config\General"
+$listConfig = "/i ""$env:TEMP\$installer""  /qn /norestart COMPENVCONFIGFILEPATH=\\thesmiths.pw\horizon\DEMConfig\General"
 
 Try 
 {
