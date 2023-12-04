@@ -69,7 +69,7 @@ inline_horizon = [
 // Install OneDrive
   "choco install onedrive",
 // Install Microsoft Teams
-  "choco install microsoft-teams",
+  "choco install microsoft-teams.install",
 // Install Adobe Reader
 //  "choco install adobereader",
 // Install Chrome Enterprise
