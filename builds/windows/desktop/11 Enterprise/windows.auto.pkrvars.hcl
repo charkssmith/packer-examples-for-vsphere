@@ -68,8 +68,6 @@ inline_horizon = [
   "choco install fslogix",
 // Install OneDrive
   "choco install onedrive",
-// Install Microsoft Teams
-  "choco install microsoft-teams.install --force",
 // Install Adobe Reader
 //  "choco install adobereader",
 // Install Chrome Enterprise
