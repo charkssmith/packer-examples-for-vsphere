@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$osotfiles = @('VMwareHorizonOSOptimizationTool.exe', 'Windows10-11-OneDrive.json')
+$osotfiles = @('VMwareHorizonOSOptimizationTool.exe', 'Windows10-11-NoOneDrive.json')
 $utilities = @('sdelete64.exe', 'LGPO.exe')
 $exe = $osotfiles[0]
 $json = $osotfiles[1]
