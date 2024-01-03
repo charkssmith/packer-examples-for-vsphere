@@ -39,9 +39,9 @@ vm_video_displays        = 4
 
 // Removable Media Settings
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_version_23h2_x64_dvd_a9092734.iso"
+iso_file           = "en-us_windows_11_business_editions_version_23h2_updated_dec_2023_x64_dvd_d9da936d"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "C5AAEFE5E1571017CA571F072F6CB4922668D98702D1ABAD34B078682E09703A"
+iso_checksum_value = "833BB895018D30182A78A9B3BA2BEF97D63149584A0E2908C4887138E2010D20"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
