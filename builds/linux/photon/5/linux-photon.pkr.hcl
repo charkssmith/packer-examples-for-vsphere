@@ -17,6 +17,10 @@ packer {
       version = ">= v1.1.1"
       source  = "github.com/hashicorp/vsphere"
     }
+    ansible = {
+      version = ">= 1.1.1"
+      source  = "github.com/hashicorp/ansible"
+    }
   }
 }
 

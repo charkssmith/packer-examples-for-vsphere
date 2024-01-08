@@ -1,0 +1,1 @@
+packer build -force -var-file="Z:\config\homelab\vsphere.pkrvars.hcl" -var-file="Z:\config\homelab\/build.pkrvars.hcl" -var-file="Z:\config\homelab\/common.pkrvars.hcl" Z:\builds\windows\server\2022
