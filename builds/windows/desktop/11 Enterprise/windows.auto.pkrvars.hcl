@@ -106,5 +106,7 @@ inline_sds = [
   "choco install putty",
 // Install Notepad++
   "choco install notepadplusplus",
+// Install Total Commander
+  "choco install totalcommander",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
