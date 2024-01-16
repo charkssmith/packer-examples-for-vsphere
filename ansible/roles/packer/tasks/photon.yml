@@ -66,9 +66,6 @@
 - name: "Clean Downloads"
   shell: |
     rm -rf ./*.zip
-- name: "Create a ssh key"
-  shell: |
-    ssh-keygen -t ecdsa -b 521 -C "packer"
 
 
 

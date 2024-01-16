@@ -933,6 +933,35 @@ menu_option_81() {
 	echo "Done."
 }
 
+menu_option_82() {
+	INPUT_PATH="$SCRIPT_PATH"/builds/linux/photon/docker/
+	echo -e "\nCONFIRM: Build a VMware Photon OS 5 Docker for VMware vSphere?"
+	echo -e "\nContinue? (y/n)"
+	read -r REPLY
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		exit 1
+	fi
+
+	### Build a VMware Photon OS 4 Template for VMware vSphere. ###
+	echo "Building a VMware Photon OS 5 Template for VMware vSphere..."
+
+	### Initialize HashiCorp Packer and required plugins. ###
+	echo "Initializing HashiCorp Packer and required plugins..."
+	packer init "$INPUT_PATH"
+
+	### Start the Build. ###
+	echo "Starting the build...."
+	packer build -force \
+		-var-file="$CONFIG_PATH/vsphere.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/build.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/ansible.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/proxy.pkrvars.hcl" \
+		-var-file="$CONFIG_PATH/common.pkrvars.hcl" \
+		"$INPUT_PATH"
+
+	### All done. ###
+	echo "Done."
+}
 
 press_enter() {
 	cd "$SCRIPT_PATH"
@@ -1007,6 +1036,7 @@ until [ "$selection" = "0" ]; do
 	echo ""
 	echo "    	80  -  Photon Packer Build"
 	echo "    	81  -  SDS (for Sequel Data Systems only)"
+	echo "    	82  -  Docker (for Charlie only)"
 	echo ""
 	echo "        I   -  Information"
 	echo "        Q   -  Quit"
@@ -1228,7 +1258,12 @@ until [ "$selection" = "0" ]; do
 		clear
 		menu_option_81
 		press_enter
-		;;			
+		;;	
+	82)
+		clear
+		menu_option_82
+		press_enter
+		;;				
 	I)
 		clear
 		info
