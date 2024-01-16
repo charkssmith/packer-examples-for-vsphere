@@ -17,6 +17,12 @@
 - name: "Add User to Docker"
   shell: |
     usermod -aG docker $USER
+- name: "Install Docker Compose"
+  shell: |
+    tdnf install docker-compose
+- name: "Install NFS Utilities"
+  shell: |
+    tdnf install nfs-utils
 - name: "Clean Downloads"
   shell: |
     rm -rf ./*.zip
