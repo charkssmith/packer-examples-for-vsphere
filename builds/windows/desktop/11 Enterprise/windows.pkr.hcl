@@ -699,8 +699,6 @@ provisioner "powershell" {
     elevated_password = var.build_password
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sds/vpnclients.ps1"])
   }
-  
-
 
   post-processor "manifest" {
     output     = local.manifest_output

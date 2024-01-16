@@ -9,7 +9,6 @@
     "partitions": [
         {"mountpoint": "/", "size": 0, "filesystem": "ext4"},
         {"mountpoint": "/boot", "size": 128, "filesystem": "ext4"},
-        {"mountpoint": "/root", "size": 128, "filesystem": "ext4"},
         {"size": 128, "filesystem": "swap"}
     ],
     "bootmode": "efi",
