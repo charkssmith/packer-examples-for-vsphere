@@ -43,9 +43,9 @@ vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
 iso_path           = "iso/windows/server"
-iso_file           = "en-us_windows_server_2022_updated_dec_2023_x64_dvd_f101ef8f.iso"
+iso_file           = "en-us_windows_server_2022_updated_jan_2024_x64_dvd_2b7a0c9f.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "BF758D86FABB28E1B0A2382C92EE6CC27F7CA2F5479236162DE78D4DDF70DD4C"
+iso_checksum_value = "C3C57BB2CF723973A7DCFB1A21E97DFA035753A7F111E348AD918BB64B3114DB"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
