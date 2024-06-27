@@ -39,9 +39,9 @@ vm_video_displays        = 4
 
 // Removable Media Settings
 iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_version_23h2_updated_feb_2024_x64_dvd_a7d49804.iso"
+iso_file           = "en-us_windows_11_business_editions_version_23h2_updated_june_2024_x64_dvd_ab91130d.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "b9e788226074441ca400d802b6cecd602931b14a2eacb0f3646a93403ab04914"
+iso_checksum_value = "A815341A01F36984795C9D054A691F54F647F5D1F37510FB059EE5960A2FACD5"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
@@ -98,8 +98,8 @@ inline_sds = [
   "choco feature enable -n allowGlobalConfirmation",
 // Install RVTools
   "choco install rvtools",
-// Install Remote Desktop Manager
-  "choco install rdm",
+// Install Royal TS
+  "choco install royalts-v7-x64",
 // Install Postman
   "choco install postman",
 // Install Putty
