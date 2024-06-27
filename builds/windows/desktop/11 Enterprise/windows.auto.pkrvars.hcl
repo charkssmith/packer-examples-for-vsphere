@@ -41,7 +41,7 @@ vm_video_displays        = 4
 iso_path           = "iso/windows/desktop"
 iso_file           = "en-us_windows_11_business_editions_version_23h2_updated_june_2024_x64_dvd_ab91130d.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "A815341A01F36984795C9D054A691F54F647F5D1F37510FB059EE5960A2FACD5"
+iso_checksum_value = "a815341a01f36984795c9d054a691f54f647f5d1f37510fb059ee5960a2facd5"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
