@@ -101,7 +101,7 @@ inline_sds = [
 // Install Royal TS
   "choco install royalts-v7-x64",
 // Install Dropbox
-  "choco install dropbox --pre"
+  "choco install dropbox --pre",
 // Install Postman
   "choco install postman",
 // Install Putty
