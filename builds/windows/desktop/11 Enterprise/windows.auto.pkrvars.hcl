@@ -98,8 +98,8 @@ inline_sds = [
   "choco feature enable -n allowGlobalConfirmation",
 // Install RVTools
   "choco install rvtools",
-// Install Royal TS
-  "choco install royalts-v7-x64",
+// Install Devolutions Remote Desktop Manager
+  "choco install rdm",
 // Install Postman
   "choco install postman",
 // Install Putty
