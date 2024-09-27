@@ -114,5 +114,7 @@ inline_sds = [
   "choco install op",
 // Install OpenConnect-GUI
   "choco install openconnect-gui",
+// Install Python
+  "choco install python",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
