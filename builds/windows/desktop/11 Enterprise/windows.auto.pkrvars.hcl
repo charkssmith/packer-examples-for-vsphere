@@ -98,8 +98,8 @@ inline_sds = [
   "choco feature enable -n allowGlobalConfirmation",
 // Install RVTools
   "choco install rvtools",
-// Install Devolutions Remote Desktop Manager
-  "choco install rdm",
+// Install Royal TS
+  "choco install royalts",
 // Install Postman
   "choco install postman",
 // Install Putty
@@ -108,5 +108,11 @@ inline_sds = [
   "choco install notepadplusplus",
 // Install Total Commander
   "choco install totalcommander",
+// Install 1Password
+  "choco install 1password",
+// Install 1Password CLI
+  "choco install op",
+// Install OpenConnect-GUI
+  "choco install openconnect-gui",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
