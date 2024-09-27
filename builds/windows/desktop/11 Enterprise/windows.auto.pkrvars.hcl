@@ -99,7 +99,7 @@ inline_sds = [
 // Install RVTools
   "choco install rvtools",
 // Install Royal TS
-  "choco install royalts-v7-x64",
+  "choco install rdm",
 // Install Postman
   "choco install postman",
 // Install Putty
@@ -114,7 +114,5 @@ inline_sds = [
   "choco install op",
 // Install OpenConnect-GUI
   "choco install openconnect-gui",
-// Install Python
-  "choco install python",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
