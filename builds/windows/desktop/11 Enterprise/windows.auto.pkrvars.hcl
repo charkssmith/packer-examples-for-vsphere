@@ -99,7 +99,7 @@ inline_sds = [
 // Install RVTools
   "choco install rvtools",
 // Install Royal TS
-  "choco install royalts",
+  "choco install royalts-v7-x64",
 // Install Postman
   "choco install postman",
 // Install Putty
@@ -109,7 +109,7 @@ inline_sds = [
 // Install Total Commander
   "choco install totalcommander",
 // Install 1Password
-  "choco install 1password",
+  "choco install 1password8",
 // Install 1Password CLI
   "choco install op",
 // Install OpenConnect-GUI
