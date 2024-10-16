@@ -112,7 +112,5 @@ inline_sds = [
   "choco install 1password8",
 // Install 1Password CLI
   "choco install op",
-// Install OpenConnect-GUI
-  "choco install openconnect-gui",
   "Get-EventLog -LogName * | ForEach { Clear-EventLog -LogName $_.Log }"
 ]
