@@ -31,7 +31,7 @@
   Try 
   {
     ### Install Any Connect ###
-    Start-Process "msiexec.exe" -ArgumentList "/i $env:TEMP\anyconnect-win-4.9.04053-core-vpn-predeploy-k9.msi /quiet" -Wait
+    Start-Process "msiexec.exe" -ArgumentList "/i C:\vpnclients\anyconnect-win-arm64-4.10.07061-core-vpn-predeploy-k9.msi /quiet" -Wait
   }
   Catch
   {
@@ -40,14 +40,14 @@
     Exit -1 
   }
 
-  Try 
+   Try 
   {
     ### Install Any Connect ###
-    Start-Process "msiexec.exe" -ArgumentList "/i C:\vpnclients\anyconnect-win-arm64-4.10.05111-core-vpn-predeploy-k9.msi /quiet" -Wait
+    Start-Process "FortiClientOnlineInstaller.exe /quiet" -Wait
   }
   Catch
   {
-    Write-Error "Failed to install Any Connect"
+    Write-Error "Failed to install Forticlient"
     Write-Error $_.Exception
     Exit -1 
   }
