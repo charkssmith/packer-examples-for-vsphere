@@ -38,10 +38,10 @@ vm_video_mem_size        = 131072
 vm_video_displays        = 4
 
 // Removable Media Settings
-iso_path           = "iso/windows/desktop"
-iso_file           = "en-us_windows_11_business_editions_version_23h2_updated_oct_2024_x64_dvd_ae1a5b16.iso"
+iso_path           = "OS/windows/desktop"
+iso_file           = "en-us_windows_11_business_editions_version_24h2_x64_dvd_59a1851e.iso"
 iso_checksum_type  = "sha256"
-iso_checksum_value = "6F6FA9E800EC7151CA763091C81CDEEF1008E1D7026544CBDD3BA4B5ED59170F"
+iso_checksum_value = "D0DCA325314322518AE967D58C3061BCAE57EE9743A8A1CF374AAD8637E5E8AC"
 
 // Boot Settings
 vm_boot_order       = "disk,cdrom"
