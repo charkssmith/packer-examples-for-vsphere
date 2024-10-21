@@ -15,10 +15,10 @@
    
   Try 
   {
-    winget install "AnyConnect" --silent --accept-package-agreements --accept-source-agreements
-    winget install "GlobalProtect" --silent --accept-package-agreements --accept-source-agreements
-    winget install "Forticlient" --silent --accept-package-agreements --accept-source-agreements
-    winget install "Pulse Secure" --silent --accept-package-agreements --accept-source-agreements
+    winget install "AnyConnect" --silent --accept-package-agreements --accept-source-agreements --source=msstore
+    winget install "GlobalProtect" --silent --accept-package-agreements --accept-source-agreements --source=msstore
+    winget install "Forticlient" --silent --accept-package-agreements --accept-source-agreements --source=msstore
+    winget install "Pulse Secure" --silent --accept-package-agreements --accept-source-agreements --source=msstore
 
   }
   Catch
