@@ -18,6 +18,7 @@
     winget install "AnyConnect" --silent --accept-package-agreements --accept-source-agreements
     winget install "GlobalProtect" --silent --accept-package-agreements --accept-source-agreements
     winget install "Forticlient" --silent --accept-package-agreements --accept-source-agreements
+    winget install "Pulse Secure" --silent --accept-package-agreements --accept-source-agreements
 
   }
   Catch
