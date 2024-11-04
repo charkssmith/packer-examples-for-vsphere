@@ -42,7 +42,7 @@ vm_disk_thin_provisioned = true
 vm_network_card          = "vmxnet3"
 
 // Removable Media Settings
-iso_path           = "iso/windows/server"
+iso_path           = "OS/windows/server"
 iso_file           = "en-us_windows_server_2022_updated_oct_2024_x64_dvd_d1a47ecc.iso"
 iso_checksum_type  = "sha256"
 iso_checksum_value = "61FA400B6E8F54E644529D024B18A578547147CDF815EA66C4B7961798717291"
