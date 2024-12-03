@@ -99,7 +99,7 @@ inline_sds = [
 // Install RVTools
   "choco install rvtools",
 // Install Royal TS
-  "choco install rdm",
+  "choco install royalts-v7-x64",
 // Install Postman
   "choco install postman",
 // Install Putty
