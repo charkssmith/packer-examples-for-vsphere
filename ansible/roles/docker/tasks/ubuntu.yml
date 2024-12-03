@@ -1,0 +1,32 @@
+---
+- name: "Setting hostname to docker"
+  shell: |
+    hostnamectl set-hostname docker
+- name: "Enable SSH"
+  shell: |
+    systemctl enable sshd
+- name: "Start SSH"
+  shell: |
+    systemctl start sshd
+- name: "Enable Docker"
+  shell: |
+    systemctl enable docker
+- name: "Start Docker"
+  shell: |
+    systemctl start docker
+- name: "Add User to Docker"
+  shell: |
+    usermod -aG docker $USER
+- name: "Install Docker Compose"
+  shell: |
+    tdnf -y install docker-compose
+- name: "Install NFS Utilities"
+  shell: |
+    tdnf -y install nfs-utils
+- name: "Clean Downloads"
+  shell: |
+    rm -rf ./*.zip
+
+
+
+
