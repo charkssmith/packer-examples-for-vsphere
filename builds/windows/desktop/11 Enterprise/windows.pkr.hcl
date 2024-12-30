@@ -670,15 +670,15 @@ provisioner "powershell" {
     scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/bginfo.ps1"])
   }
 
-  provisioner "powershell" {
-    only = ["vsphere-iso.windows-desktop-11-sds"]
-    environment_vars = [
-      "BUILD_USERNAME=${var.build_username}"
-    ]
-    elevated_user     = var.build_username
-    elevated_password = var.build_password
-    scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sds/vpnclients.ps1"])
-  }
+  #provisioner "powershell" {
+  #  only = ["vsphere-iso.windows-desktop-11-sds"]
+  #  environment_vars = [
+  #    "BUILD_USERNAME=${var.build_username}"
+  #  ]
+  #  elevated_user     = var.build_username
+  #  elevated_password = var.build_password
+  #  scripts           = formatlist("${path.cwd}/%s", ["scripts/windows/sds/vpnclients.ps1"])
+  #}
 
   provisioner "powershell" {
     only = ["vsphere-iso.windows-desktop-11-sds"]
