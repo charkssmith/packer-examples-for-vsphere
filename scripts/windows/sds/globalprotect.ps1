@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-$software = "GlobalProtect_*"
+$software = "GlobalProtect*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
