@@ -8,7 +8,7 @@ $installer = "FortiClientVPNSetup_7.4.2.1737_x64.exe"
   # Install o365
   Try
   {
-    Start-Process $env:TEMP\$installer -ArgumentList -PassThru -Wait -ErrorAction Stop
+    Start-Process $env:TEMP\$installer -PassThru -Wait -ErrorAction Stop
   }
   Catch
   {
