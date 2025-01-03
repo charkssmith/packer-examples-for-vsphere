@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-$software = "anyconnect_*"
+$software = "anyconnect*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
