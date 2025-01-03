@@ -3,7 +3,7 @@ $software = "anyconnect_*"
 
 ### Set variables for install ###
 $installer = Get-Item $env:TEMP\$software | Select-Object -ExpandProperty Name
-$listConfig = "/i ""$env:TEMP\$installer"" /qm"
+$listConfig = "/i ""$env:TEMP\$installer"" /qn"
 
 Try 
 {
